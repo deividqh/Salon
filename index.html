@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script type='text/javascript' src="./DIVXDIV.js"></script>
+    <script type='text/javascript' src="./Salon.js"></script>
+    <script type='text/javascript' src="./menuSalon.js"></script>
+
+</head>
+
+<!--
+	<body style='height:100%;' onload=aveCesar(); id='soyBody'>
+-->
+
+<body style='height:100%;' id='soyBody'>
+    <header>
+        <!-- === MENU DE NAVEGACION SUPERIOR === -->
+        <nav class="navbar navbar-expand-lg bg-white">
+            <div id="ContenedorMenuSup"></div>
+        </nav>        
+    </header>
+    <!--==== Cuerpo de la Pagina =====-->
+    <div id='Contenedor1'></div>
+</body>
+</html>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////    
+//=== ZONA    J A V A S C R I P T ===
+//////////////////////////////////////////////////////////////////////////////////
+ --> 
+<script>
+   /*  //
+    //======================================================================
+    //======================= DRAG AND DROP ================================
+    //======================================================================
+    //
+    //::: Xa permitir que la posición suelte los elementos.
+    function AllowDrop(ev) {
+        ev.preventDefault();
+    }
+    //
+    //::: Xa elegir el elemento a capturar o arrastrar.
+    function dragStart(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);  //el registrador del movimiento.
+        //
+        const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
+        console.log('\nDrag Start::: ' + ev.target.id + '\t|| objDrag: ' + objDrag.id);
+    }
+    //______________________________
+    //::: LLEGA ALGUIEN AL SALON :::
+    function DropSalon(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        //
+        //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
+        const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
+        const objDrop = ev.target;
+        //const objDrop=document.getElementById(ev.target.id);
+        console.log('DropSalon::: ObjetoDrop: ' + objDrop.id + ' \t || Objeto Drag: ' + objDrag.id);
+        //
+        //=== QUIEN LLEGA ?? ====
+        switch (objDrag.id) {
+            case "imgSillaMenu":
+                console.log('MenuSilla->Baldosa');
+                //Silla_To_Baldosa(objDrag, objDrop);
+                Silla_To_Baldosa(sillaToClone, objDrop);
+                break;
+            case "imgMesaMenu":
+                console.log('MenuMesa->Baldosa');
+                //Mesa_To_Baldosa(objDrag , objDrop);
+                Mesa_To_Baldosa(mesaToClone, objDrop);
+                break;
+            default:
+                if (data.lastIndexOf('Mesa') >= 0) {
+                    console.log('MesaEnSalon->Baldosa');
+                    MesaEnSalon_To_Baldosa(objDrag, objDrop);
+                    //MesaEnSalon_To_Baldosa(mesaToClone , objDrop);
+                } else if (data.lastIndexOf('Silla') >= 0) {
+                    console.log('SillaEnSalon->Baldosa');
+                    SillaEnSalon_To_Baldosa(objDrag, objDrop);
+                }
+                break;
+        }
+
+    }
+    //
+    //::: QUIEN LLEGA A LA PUERTA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+    //::: ev.target , es el objeto, 
+    function DropPuerta(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        //
+        //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
+        const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
+        const objDrop = ev.target;
+        console.log('DropPuerta::: ObjetoDrop(Puerta): ' + objDrop.id + ' \t || Objeto Drag(a eliminar): ' + objDrag.id);
+        //
+        //::: Los Que No :::
+        if (objDrag.id == 'imgSillaMenu' || objDrag.id == 'imgMesaMenu')
+            return;
+        //    
+        //Venga de quien venga, la puerta elimina todo lo que la atraviesa. 
+        objDrop.appendChild(objDrag);
+        objDrop.removeChild(objDrag);
+        //
+        //=== QUIEN LLEGA 
+        if (objDrag.id.lastIndexOf('Mesa') >= 0) {
+            console.log('MesaEnSalon->Puerta');
+            mesasTot--;
+            //
+            //=== Elimina una Mesa.
+        } else if (data.lastIndexOf('Silla') >= 0) {
+            console.log('SillaEnSalon->Puerta');
+            //
+            //=== Elimina una Silla.
+            sillasTot--;
+        }
+        cuentaS_To_Menu();
+    }
+    //
+    //::: QUIEN LLEGA A LA MESA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+    //::: ev.target , es el objeto, 
+    function DropMesa(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        //
+        //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
+        const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
+        const objDrop = ev.target;
+        console.log('DropMesa::: ObjetoDrop(Puerta): ' + objDrop.id + ' \t || Objeto Drag: ' + objDrag.id);
+        //
+        //::: Valida que no se tiren ni la mesa ni la silla del "nav"
+        if (objDrag.id == 'imgMesaMenu') return;
+        //
+        switch (objDrag.id) {
+            case "imgSillaMenu":
+                console.log('Silla->Mesa');
+                break;
+            default:
+                break;
+        }
+    } */
+</script>
+<!--
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                            MAIN() DE EJECUCION DEL PROGRAMA
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+-->
+<script type="text/javascript">
+    
+    generarMenuNavegacion('ContenedorMenuSup');
+
+    let mesaToClone = document.getElementById('imgMesaMenu');
+    let sillaToClone = document.getElementById('imgSillaMenu');
+    //=== Crea un Salon.
+    const elSaloon = new DIVXDIV('SALON', 'Contenedor1');
+    //=== Le añade las baldosas.
+    elSaloon.AddDivs(200);
+    //== Les ponemos un Nombre para Luego Buscarlas
+    elSaloon.SwitchTAG('#Baldosas');
+    console.log(elSaloon.cssVerArbol());
+    //
+    var miArray = elSaloon.getArrayTAGs('#Baldosas');
+    miArray.forEach(function (unDiv, indice, array) {
+        //
+        //========= DRAG =================================================
+        //unDiv.draggable="true";       //Para hacerlos movibles. 
+        //unDiv.addEventListener('dragstart', dragStart);
+        //========= FIN DRAG =============================================
+        //
+        //=== CENTRAR ==== (está en el css en 'estilosBaldosa') 
+        //unDiv.style.display= "flex";
+        //unDiv.style.justifyContent= "center";
+        //unDiv.style.alignItems = "center";
+        //==== fin centrar elementos==================================================
+
+        unDiv.addEventListener('drop', DropSalon);
+        unDiv.addEventListener('dragover', AllowDrop);
+    });
+    elSaloon.cssSetClassNameUnique('estiloSalon', true);
+    elSaloon.cssSetClassNameUnique('estiloBaldosas');
+    console.log(elSaloon.cssVerArbol());
+    //
+    //
+
+</script>
