@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!--
+    -->
+    <script type='text/javascript' src="./jvscrpt/DIVXDIV.js"></script>
+    <script type='text/javascript' src="./jvscrpt/Salon.js"></script>
+</head>
+<!--
+	<body style='height:100%;' onload=aveCesar(); id='soyBody'>
+-->
+<body style='height:100%;' id='soyBody'>
+    <header>
+        <!-- === === -->
+        <!-- === MENU DE NAVEGACION SUPERIOR === -->
+        <!-- === === -->
+        <nav class="navbar navbar-expand-xxl  bg-light navbar-light  justify-content-center ">
+            <div class="container-fluid row"> <!-- === CONTENDOR DEL MENU SUPERIOR . TODO EN UNA FILA === -->
+                <div class="col-8">
+                    <div class="container-fluid row">
+                        <div class="col-4">
+                            <div class="container row">                                
+                                <!--  === MESA === https://www.freecodecamp.org/espanol/news/imagen-de-fondo-css-con-codigo-de-ejemplo-html/-->
+                                <div class="col-12" id="Menu-Mesa">
+                                    <div id='MESA' class="m-1 p-3" style="background-image: url('./imagenes/mesa.png'); 
+                                                                        background-repeat: no-repeat; 
+                                                                        background-size: contain; 
+                                                                        background-position: center center;
+                                                                        height: 4vh;" 
+                                                                        draggable="true" 
+                                                                        ondragstart="dragStart(event);";
+                                                                        ondragenter="dragenter(event);";
+                                                                        ondragover="dragover(event);";
+                                                                        ondrag="drag(event);";
+                                                                        ondragleave="dragleave(event);";
+                                                                        ondragend="dragend(event);";
+                                                                        > 
+                                    </div>            
+                                </div>
+                                <div class="col-1">
+                                    <div id="LBLnumMesas" class="label label-default fw-bold small" >(0)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id='PUERTA' class="col-3"> <!-- === PUERTA DE SALIDA === -->
+                            <img src="./imagenes/puerta.png" id="puertaDrop" height="40vh" style="cursor: pointer"
+                                ondrop="DropPuerta(event)" ondragover="AllowDrop(event)">
+                        </div>
+        
+                        <div class="col-4"> <!-- === SILLA === -->
+                            <div class="container row">
+                                <div class="col-12" id="Menu-Silla">
+                                    <div id='SILLA' class="m-1 p-3" style="background-image: url('./imagenes/silla.png'); 
+                                                                                                    background-repeat: no-repeat; 
+                                                                                                    background-size: contain; 
+                                                                                                    background-position: center center;"
+                                        draggable="true" 
+                                        ondragstart="dragStart(event)"
+                                        ondragenter="console.log('DragEnter:::INICIO 1');"
+                                        ondragover="console.log('DragOver::: .......WHILE WHILE');"
+                                        ondrag="console.log('Drag:::origen del arrastre .......WHILE1');"
+                                        ondragleave="console.log('DragLeave:::Antes de Drop');"
+                                        ondragend="console.log('DragEnd:::THE FIN despues de Drop');"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    
+                                        <div id="LBLnumSillas" class="label label-default fw-bold small" >(0)</div>
+                                    
+                                </div>
+                            </div>
+                            <!--
+                                <img src="./imagenes/silla.png" id="SILLA" height="40px" style="cursor: pointer" draggable="true" ondragstart="dragStart(event)">
+                            -->                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-auto">                  <!-- CONTENEDOR DEL BOTON OFFLINE-->
+                    <div class="container-fluid row">   <!-- -->
+                        <div class="col-auto">          <!-- -->
+                            <!-- =====
+                            NAV BUTTON
+                            ==========-->
+                            <button class="navbar-toggler  " type="button" 
+                                    data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+                                <span class="navbar-toggler-icon "></span>
+                            </button>                            
+                        </div>
+                        <!-- 
+                        ==================================
+                        * OFFCANVAS MAIN CONTAINER START *
+                        ==================================
+                        -->
+                        <section class="offcanvas opacity-75 offcanvas-start col-auto" id="menuLateral" tabindex="-1">
+                            <div class="offcanvas-header ms-1 " data-bs-theme="dark">
+                                
+
+                                <img   src="./imagenes/LOGO-LGTBI.gif" id="LOGO" class="offcanvas-title " 
+                                        style="cursor: pointer; height: 8vh; ">
+
+
+                                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="offcanvas"></button>
+                            </div>
+                            <!-- OFF CANVAS MENU LINKS  START-->
+                            <div class="offcanvas-body d-flex flex-column justify-content-between px-0">
+                                <ul class="navbar-nav fs-5 justify-content-evenly">
+                                    <li class="nav-item p-2 py-md-1 ">
+                                        <a href="https://www.laforjadeprometeo.com/" 
+                                        class="nav-link text-light">
+                                        
+                                        LINK 1
+                                        
+                                        </a>
+                                    </li>
+                                    <li class="nav-item p-2 py-md-1">
+                                        <a href="https://www.laforjadeprometeo.com/" 
+                                        class="nav-link text-light">
+                                        
+                                        LINK 2
+                                        
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--
+                                INI FORMULARIO Dentro del Menu Lateral.........................INI
+                                -->
+                                <div class="container border border-1  border-success rounded "
+                                     style="padding: 1vh; margin: 1vh; width:fit-content">
+                                    <form id="FormMenuUP">  
+                                        <div class="col-1 m-2">
+                                            <div id="TotalBaldosas" class="label label-default fw-bold border-1 bg-sucess text-light" >
+                                                *
+                                            </div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <!-- * BOTON * -->
+                                            <div class="col-1 me-4 ">
+                                                <button id="BOTON_ADD_BALDOSAS" type="button" class="btn btn-secondary btn-sm"
+                                                    style="font-size: 10px;" onclick="addBaldosas_To_Tablero_LinkHtml();">
+                                                    Add
+                                                </button>
+                                            </div>
+                                            <!-- * TEXTBOX * -->
+                                            <div class="col-2">
+                                                <input  id="TEXTBOX_NUM_BALDOSAS" type="text" class="form-control p-1" style="font-size: 12px;"
+                                                        value="1">
+                                            </div>
+                                            <!-- * BOTON * -->
+                                            <div class="col-1 me-4 ">
+                                                <button id="BOTON_NUM_COLUMNAS" type="button" class="btn btn-secondary btn-sm text-light"
+                                                    style="font-size: 10px; " onclick="addColums_To_Tablero_LinkHtml('TEXTBOX_NUM_COLUMNAS');">
+                                                    COLS
+                                                </button>
+                                            </div>
+                                            <!-- * TEXTBOX * -->
+                                            <div class="col-2">
+                                                <input id="TEXTBOX_NUM_COLUMNAS" type="text" class="form-control p-1" style="font-size: 12px;"
+                                                    value="12">
+                                            </div>
+                                            <!-- * LABEL * -->
+                                            
+                                            <!-- * BOTON * -->
+                                            <div class="col-1 mx-2">
+                                                <button id="BOTON_XXX" type="button" class="btn btn-secondary btn-sm text-light"
+                                                    style="font-size: 10px; " onclick="pruebasXXX_LinkHtml();">
+                                                    XXX
+                                                </button>
+                                            </div>
+                                            <!-- * TEXTBOX * -->
+                                            <div class="col-2">
+                                                <input id="TEXTBOX_XXX" type="text" class="form-control " style="font-size: 10px;"
+                                                    value="12">
+                                            </div>
+                                        </div>
+                                        <!--
+                                            <div class="row justify-content-center"></div>
+                                        -->
+                                        <div class="flex-row my-3 ">
+                                            <div class="form-check form-switch col-auto my-3 mx-2">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                                <label class="form-check-label text-light" for="flexSwitchCheckDefault">
+                                                    Checkbox Input
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- INI RANGE -->
+                                        <div class="d-flex-row p-2 bd-highlight">
+                                            <label id='lblRange' for="elRange" class="form-label text-light">
+                                                Rango de ejemplo. 
+                                            </label>
+                                            <input id="elRange" type="range" class="form-range" min="0" max="20" step="1" 
+                                                    onchange="document.getElementById('Value_Range').value=document.getElementById('elRange').value;
+                                                           addColums_To_Tablero_LinkHtml('elRange');
+                                                            ">
+                                            <!-- * TEXTBOX * -->
+                                            <div >
+                                                <input id="Value_Range" type="text" class="form-control  p-2 " style="font-size: 12px;"
+                                                for="elRange" value="10">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex-row p-2 bd-highlight">
+                                            <label id='lblRange2' for="elRange2" class="form-label text-light">
+                                                Rango Padding
+                                            </label>
+                                            <input id="elRange2" type="range" class="form-range" min="0" max="20" step="1" 
+                                                    onchange="document.getElementById('Value_Range2').value=document.getElementById('elRange2').value;">
+                                            <!-- * TEXTBOX * -->
+                                            <div >
+                                                <input id="Value_Range2" type="text" class="form-control  p-2 " style="font-size: 12px;"
+                                                for="elRange2" value="10">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex-row p-2 bd-highlight">
+                                            <label id='lblRange3' for="elRange3" class="form-label text-light">
+                                                Rango Margin
+                                            </label>
+                                            <input id="elRange3" type="range" class="form-range" min="0" max="20" step="1" 
+                                                    onchange="document.getElementById('Value_Range3').value=document.getElementById('elRange3').value;">
+                                            <!-- * TEXTBOX * -->
+                                            <div>
+                                                <input id="Value_Range3" type="text" class="form-control  p-2 " style="font-size: 12px;"
+                                                for="elRange3" value="10">
+                                            </div>
+                                        </div>
+                                        <!-- FIN RANGE -->
+                                    </form>
+                                </div>
+                                <!--
+                                FIN  FORMULARIO Dentro de Menú Lateral......................................FIN
+                                -->
+
+                                <!-- ENLACES REDES SOCIALES -->
+                                <div class="d-lg-none align-self-center py-3">
+                                    <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-twitter px-2 text-info fs-2"></i></a>
+                                    <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-facebook px-2 text-info fs-2"></i></a>
+                                    <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-github px-2 text-info fs-2"></i></a>
+                                    <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-whatsapp px-2 text-info fs-2"></i></a>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 
+                            =================================
+                             OFFCANVAS MAIN CONTAINER  E N D 
+                            =================================
+                        -->
+                    </div>
+                </div>
+                <!-- 
+                    ============================== FORMULARIO END====================================
+                -->
+            </div>  <!-- FIN FILA DEL MENU-->
+        </nav>
+    </header>
+
+    <!--===============================================================-->
+    <div id='Contenedor1'></div>
+    <!--===============================================================-->
+
+    
+
+</body>
+
+</html>
+
+<!-- ********************************************
+//////////////////////////////////////////////////////////////////////////////////    
+//=== ZONA    J A V A S C R I P T ===
+//////////////////////////////////////////////////////////////////////////////////-->
+<script>
+
+</script>
+<script>
+    //
+    //======================================================================
+    //======================= DRAG AND DROP ================================
+    //======================================================================
+</script>
+<!--
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+-->
+<script type="text/javascript">
+
+    let mesaToClone = document.getElementById('MESA');
+    let sillaToClone = document.getElementById('SILLA');
+
+    //=== Crea un Salon.
+    const elSaloon = new DIVXDIV('SALON', 'Contenedor1');
+    //=== Le añade las baldosas.
+    elSaloon.AddDivs(107);
+    //== Les ponemos un Nombre para Luego Buscarlas
+    elSaloon.Switch_CName('#Baldosas');
+    console.log(elSaloon.cssVerArbol());
+    //
+    var miArray = elSaloon.getArray_ByCName('#Baldosas');
+    miArray.forEach(function (unDiv, indice, array) {
+        //
+        //========= DRAG =================================================
+        //unDiv.draggable="true";       //Para hacerlos movibles. 
+        //unDiv.addEventListener('dragstart', dragStart);
+        //========= FIN DRAG =============================================
+        //
+        //=== CENTRAR ==== (está en el css en 'estilosBaldosa') 
+        //unDiv.style.display= "flex";
+        //unDiv.style.justifyContent= "center";
+        //unDiv.style.alignItems = "center";
+        //==== fin centrar elementos==================================================
+
+        unDiv.objDiv.addEventListener('drop', DropSalon);
+        unDiv.objDiv.addEventListener('dragover', AllowDrop);
+    });
+    elSaloon.cssSetClassNameUnique('estiloSalon', true);
+    elSaloon.cssSetClassNameUnique('estiloBaldosas');
+    console.log(elSaloon.cssVerArbol());
+    //
+    //
+
+</script>

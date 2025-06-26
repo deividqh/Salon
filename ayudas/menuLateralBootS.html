@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu Lateral</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  
+  <!-- COPY =============================================================== -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+  </head>
+
+
+
+  <style>
+    nav,
+    .offcanvas {
+      background-color: #1e293b;
+    }
+    .navbar-toggler {
+      border: none;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav > li:hover {
+        background-color: #0dcaf0;
+      }
+    }
+  </style>
+  <body>
+    <!-- MENU START  -->
+    <nav class="navbar navbar-expand-xxl navbar-dark">
+      
+      <!-- COPY =============================================================== -->
+
+      <!-- _________________
+        NAV CONTAINER START -->
+      <div class="container-fluid">
+        <a href="https://www.laforjadeprometeo.com/" class="navbar-brand text-info fw-semibold fs-4 ">
+          <div class="display-flex">
+            <img src="./imagenes/LOGO-LGTBI.gif" class=""  alt="Go" style="height: 75px;">
+          </div>
+        </a>
+        <div>
+                <!-- METER AQUI CABECERA -->          
+        </div>        
+        <!-- ========
+          NAV BUTTON  -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- ============================
+          OFFCANVAS MAIN CONTAINER START -->
+        <section class="offcanvas offcanvas-start" id="menuLateral" tabindex="-1">
+          <div class="offcanvas-header" data-bs-theme="dark">
+            <h5 class="offcanvas-title text-info">EMPRINNOS</h5>
+            <button
+              class="btn-close"
+              type="button"
+              aria-label="Close"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+          <!-- OFF CANVAS MENU LINKS  START-->
+          <div class="offcanvas-body d-flex flex-column justify-content-between px-0">
+            <ul class="navbar-nav fs-5 justify-content-evenly">
+              <li class="nav-item p-3 py-md-1">
+                <a href="https://www.laforjadeprometeo.com/" class="nav-link">LINK 1</a>
+              </li>
+              <li class="nav-item p-3 py-md-1">
+                <a href="https://www.laforjadeprometeo.com/" class="nav-link">LINK 2</a>
+              </li>
+            </ul>
+            <!--
+              FORMULARIO DENTRO DEL MENU LATERAL.........................FROM
+            -->
+            <div class="container border border-1  border-success rounded " style="padding: 1vh; margin: 1vh; width:fit-content" >
+              <form id="FormMenuUP" > 
+                  <div class="row">
+
+                      <div class="col-1"></div>
+
+                      <div class="col-2">
+                          <button id="BOTON_ADD_BALDOSAS" type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
+                          onclick="">Add</button>
+                      </div>
+
+                      <div class="col-2">
+                          <input id="TEXTBOX_NUM_BALDOSAS" type="text" class="form-control "  style="font-size: 10px;"
+                          value="1">
+                      </div>
+
+                      <div class="col-1"></div>
+                      
+                      <div class="col-2">
+                          <button id="BOTON_NUM_COLUMNAS" type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
+                          onclick="addColumnas_To_Salon();">COLS
+                          </button>
+                      </div>
+                      <div class="col-2">
+                          <input id="TEXTBOX_NUM_COLUMNAS" type="text" class="form-control " style="font-size: 10px;"
+                               value="12">
+                      </div>
+                      <div class="col-1">
+                          <div class="label label-default fw-bold border-1 bg-sucess" id="TotalBaldosas">*</div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="form-check form-switch col-auto">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                      </div>
+
+                  </div>
+                  <!-- RANGE -->      
+                  <div>
+                    <label for="customRange3" class="form-label">Example range</label>
+                    <input id="customRange3" type="range" class="form-range" min="0" max="25" step="0.5" >
+                  </div>
+                  <!-- RANGE -->      
+
+
+              </form>
+          </div>
+            <!--
+              FORMULARIO DENTRO DEL MENU LATERAL......................................TO
+            -->
+             
+            <!-- ENLACES REDES SOCIALES -->
+
+            <div class="d-lg-none align-self-center py-3">
+              <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-twitter px-2 text-info fs-2"></i></a>
+              <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-facebook px-2 text-info fs-2"></i></a>
+              <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-github px-2 text-info fs-2"></i></a>
+              <a href="https://www.laforjadeprometeo.com/"><i class="bi bi-whatsapp px-2 text-info fs-2"></i></a>
+            </div>
+          </div>
+        </section>
+        <!-- OFFCANVAS MAIN CONTAINER END  -->
+      </div>
+    </nav>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

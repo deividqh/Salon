@@ -11,6 +11,7 @@
 
     <script type='text/javascript' src="./DIVXDIV.js"></script>
     <script type='text/javascript' src="./Salon.js"></script>
+    <script type='text/javascript' src="./menuSalon.js"></script>
 
 </head>
 
@@ -20,91 +21,22 @@
 
 <body style='height:100%;' id='soyBody'>
     <header>
-        <!-- === === -->
         <!-- === MENU DE NAVEGACION SUPERIOR === -->
-        <!-- === === -->
         <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid row">
-        
-                <!-- === MESA === -->
-                <div class="col-1 d-flex align-items-center justify-content-center">
-                    <img src="./imagenes/mesa.png" id="imgMesaMenu" height="40px" style="cursor: pointer"
-                         draggable="true" ondragstart="dragStart(event)" alt="Mesa">
-                </div>
-                <div class="col-1 d-flex align-items-center">
-                    <div class="fw-bold" id="LBLnumMesas">(0)</div>
-                </div>
-        
-                <!-- === Espaciador === -->
-                <div class="col-1"></div>
-        
-                <!-- === PUERTA DE SALIDA === -->
-                <div class="col-1 d-flex align-items-center justify-content-center">
-                    <img src="./imagenes/puerta.png" id="puertaDrop" height="40px" style="cursor: pointer"
-                         ondrop="DropPuerta(event)" ondragover="AllowDrop(event)" alt="Puerta de Salida">
-                </div>
-        
-                <!-- === Espaciador === -->
-                <div class="col-1"></div>
-        
-                <!-- === SILLA === -->
-                <div class="col-1 d-flex align-items-center justify-content-center">
-                    <img src="./imagenes/silla.png" id="imgSillaMenu" height="40px" style="cursor: pointer"
-                         draggable="true" ondragstart="dragStart(event)" alt="Silla">
-                </div>
-                <div class="col-1 d-flex align-items-center">
-                    <div class="fw-bold" id="LBLnumSillas">(0)</div>
-                </div>
-        
-                <!-- === FORMULARIO === -->
-                <div class="col-5">
-                    <form id="FormMenuUP">
-                        <div class="row align-items-center">
-                            <div class="col-2 offset-1">
-                                <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
-                                        onclick="AddSillas();">Add</button>
-                            </div>
-                            <div class="col-2">
-                                <input type="text" class="form-control form-control-sm" id="Txt_NSillas" 
-                                       style="font-size: 10px;" onclick="resetSillasForm();" value="1">
-                            </div>
-                            <div class="col-2">
-                                <button id="Btn_NCOL" type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
-                                        onclick="AddCOLs();">COLS</button>
-                            </div>
-                            <div class="col-2">
-                                <input type="text" class="form-control form-control-sm" id="Txt_NCOL" 
-                                       style="font-size: 10px;" value="0">
-                            </div>
-                            <div class="col-1">
-                                <div class="fw-bold" id="TotalBaldosas">*</div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        
+            <div id="ContenedorMenuSup"></div>
+        </nav>        
     </header>
-
-    <!--===============================================================-->
+    <!--==== Cuerpo de la Pagina =====-->
     <div id='Contenedor1'></div>
-    <!--===============================================================-->
-
-
 </body>
-
 </html>
 
-<!-- ********************************************
-//////////////////////////////////////////////////////////////////////////////////    
+<!-- //////////////////////////////////////////////////////////////////////////////////    
 //=== ZONA    J A V A S C R I P T ===
-//////////////////////////////////////////////////////////////////////////////////-->
+//////////////////////////////////////////////////////////////////////////////////
+ --> 
 <script>
-
-</script>
-<script>
-    //
+   /*  //
     //======================================================================
     //======================= DRAG AND DROP ================================
     //======================================================================
@@ -216,7 +148,7 @@
             default:
                 break;
         }
-    }
+    } */
 </script>
 <!--
     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -226,6 +158,9 @@
     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 -->
 <script type="text/javascript">
+    
+    generarMenuNavegacion('ContenedorMenuSup');
+
     let mesaToClone = document.getElementById('imgMesaMenu');
     let sillaToClone = document.getElementById('imgSillaMenu');
     //=== Crea un Salon.

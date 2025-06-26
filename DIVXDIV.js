@@ -1,3 +1,21 @@
+//
+/*
+	- ■ Clase que tiene que realizar las operaciones sobre el Head...con archivos .css y .src 
+		■ ■ CREA 
+		■ ■ MODIFICA 
+		■ ■ ELIMINA nodos en el HEAD   	
+*/
+
+/**
+	 ■ Cuando se instancia esta clase, se genera un Tag Link en el constructor, esto genera:
+			1• un idLink ( 'idLinkHtml_DVD_0' ) 
+			2• un .css  ('./estilos/styleDvd.css' )  ... El css tiene las clases tb ctes 
+	  • • • A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
+	  
+	 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	    <LINK     Id=IDLINK_XDEFLINK  Rel="stylesheet"    Href=CSS_HREFLINK    Type="text/css" /> 
+	 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
 const IDLINK_XDEF = 'IDLINK_NONAME';		//EL ID PARA LOS LINK CREADOS...POR DEFECTO 
 const IDSCRIPT_XDEF = 'IDSCRIPT_NONAME';	//EL ID PARA LOS SCRIPT CREADOS...POR DEFECTO 
 
@@ -7,21 +25,6 @@ const CSS_TYPESCRIPT = "text/javascript";
 const CSS_HREF_LINK = './estilos/styleDvd.css';	//Path al archivo .css POR DEFECTO
 
 
-//
-/*
-	-Clase que tiene que realizar las operaciones sobre el Head...con archivos .css y .src 
-	//-CREA / MODIFICA / ELIMINA nodos en el HEAD   	
-*/
-
-/**________________________________________________________________________________________________
-	 * Cuando se instancia esta clase, se genera un Tag Link en el constructor, esto genera:
-	 * un idLink ( 'idLinkHtml_DVD_0' ) y un .css  ('./estilos/styleDvd.css' ):
-	 * El css tiene las clases tb ctes ( )
-	 * A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
-	 * 
-	 *_________________________________________________________________________________________________
-	 *     <LINK     Id=IDLINK_XDEFLINK  Rel="stylesheet"    Href=CSS_HREFLINK    Type="text/css" /> 
-	 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
 class HEADDRIVE {
 	//
 	tagHEAD = '';		//PARA CACHAR EL HEAD DE LA WEB...O CREAR UNO.
