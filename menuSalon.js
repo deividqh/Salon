@@ -11,11 +11,11 @@ function generarMenuNavegacion(contenedorId) {
         return;
     }
 
-    // Crea el div principal del menú de navegación
+    // ■■■■■■■■■■■■■■■■ Crea el div principal del menú de navegación
     const containerFluid = document.createElement("div");
     containerFluid.className = "container-fluid row";
 
-    // === MESA ===
+    // ■■■■■■■■■■■■■■■■ MESA 
     const mesaDiv = document.createElement("div");
     mesaDiv.className = "col-1 d-flex align-items-center justify-content-center";
     
@@ -33,7 +33,7 @@ function generarMenuNavegacion(contenedorId) {
         mesaLabelDiv.className = "col-1 d-flex align-items-center";
         mesaLabelDiv.innerHTML = '<div class="fw-bold" id="LBLnumMesas">(0)</div>';
 
-    // === PUERTA DE SALIDA ===
+    // ■■■■■■■■■■■■■■■■ PUERTA DE SALIDA 
     const puertaDiv = document.createElement("div");
     puertaDiv.className = "col-1 d-flex align-items-center justify-content-center";
     
@@ -47,7 +47,7 @@ function generarMenuNavegacion(contenedorId) {
         puertaImg.ondragover = (event) => AllowDrop(event);
         puertaDiv.appendChild(puertaImg);
 
-    // === SILLA ===
+    // ■■■■■■■■■■■■■■■■ SILLA ===
     const sillaDiv = document.createElement("div");
     sillaDiv.className = "col-1 d-flex align-items-center justify-content-center";
     
@@ -65,7 +65,7 @@ function generarMenuNavegacion(contenedorId) {
         sillaLabelDiv.className = "col-1 d-flex align-items-center";
         sillaLabelDiv.innerHTML = '<div class="fw-bold" id="LBLnumSillas">(0)</div>';
 
-    // === FORMULARIO ===
+    //  ■■■■■■■■■■■■■■■■ FORMULARIO 
     const formularioDiv = document.createElement("div");
     formularioDiv.className = "col-5";
 
@@ -75,7 +75,7 @@ function generarMenuNavegacion(contenedorId) {
     const formRow = document.createElement("div");
     formRow.className = "row align-items-center";
 
-    // Botón Add
+    // ■ ■ ■ Botón Add
     const addButtonDiv = document.createElement("div");
     addButtonDiv.className = "col-2 offset-1";
     const addButton = document.createElement("button");
@@ -83,10 +83,10 @@ function generarMenuNavegacion(contenedorId) {
     addButton.className = "btn btn-secondary btn-sm";
     addButton.style.fontSize = "10px";
     addButton.textContent = "Add";
-    addButton.onclick = () => AddSillas();
+    addButton.onclick = () => add_sillas();
     addButtonDiv.appendChild(addButton);
 
-    // Input Txt_NSillas
+    // ■ ■ ■ Input Txt_NSillas
     const txtSillasDiv = document.createElement("div");
     txtSillasDiv.className = "col-2";
     const txtSillas = document.createElement("input");
@@ -95,10 +95,10 @@ function generarMenuNavegacion(contenedorId) {
     txtSillas.id = "Txt_NSillas";
     txtSillas.style.fontSize = "10px";
     txtSillas.value = "1";
-    txtSillas.onclick = () => resetSillasForm();
+    txtSillas.onclick = () => reset_sillas_form();
     txtSillasDiv.appendChild(txtSillas);
 
-    // Botón COLS
+    // ■ ■ ■ Botón COLS
     const colButtonDiv = document.createElement("div");
     colButtonDiv.className = "col-2";
         const colButton = document.createElement("button");
@@ -107,10 +107,10 @@ function generarMenuNavegacion(contenedorId) {
         colButton.className = "btn btn-secondary btn-sm";
         colButton.style.fontSize = "10px";
         colButton.textContent = "COLS";
-        colButton.onclick = () => AddCOLs();
+        colButton.onclick = () => add_columnas();
         colButtonDiv.appendChild(colButton);
 
-    // Input Txt_NCOL
+    // ■ ■ ■ Input Txt_NCOL
     const txtColDiv = document.createElement("div");
     txtColDiv.className = "col-2";
         const txtCol = document.createElement("input");
@@ -121,7 +121,7 @@ function generarMenuNavegacion(contenedorId) {
         txtCol.value = "0";
         txtColDiv.appendChild(txtCol);
 
-    // Total Baldosas Label
+    // ■ ■ ■ Total Baldosas Label
     const totalBaldosasDiv = document.createElement("div");
     totalBaldosasDiv.className = "col-1";
         const totalBaldosasLabel = document.createElement("div");
@@ -130,7 +130,7 @@ function generarMenuNavegacion(contenedorId) {
         totalBaldosasLabel.textContent = "*";
         totalBaldosasDiv.appendChild(totalBaldosasLabel);
 
-    // Agrega todos los elementos del formulario a la fila
+    // Crea una Fila del Formulario:
     formRow.appendChild(addButtonDiv);
     formRow.appendChild(txtSillasDiv);
     formRow.appendChild(colButtonDiv);
@@ -176,7 +176,7 @@ function crearFormulario() {
     btnAdd.className = "btn btn-secondary btn-sm";
     btnAdd.style.fontSize = "10px";
     btnAdd.textContent = "Add";
-    btnAdd.onclick = function() { AddSillas(); }; // Llama a la función AddSillas
+    btnAdd.onclick = function() { add_sillas(); }; // Llama a la función add_sillas
     btnAddDiv.appendChild(btnAdd);
 
     // Crear input para el número de sillas
@@ -188,7 +188,7 @@ function crearFormulario() {
     inputSillas.id = "Txt_NSillas";
     inputSillas.style.fontSize = "10px";
     inputSillas.value = "1";
-    inputSillas.onclick = function() { resetSillasForm(); }; // Llama a la función resetSillasForm
+    inputSillas.onclick = function() { reset_sillas_form(); }; // Llama a la función reset_sillas_form
     inputSillasDiv.appendChild(inputSillas);
 
     // Crear botón "COLS"
@@ -200,7 +200,7 @@ function crearFormulario() {
     btnCols.className = "btn btn-secondary btn-sm";
     btnCols.style.fontSize = "10px";
     btnCols.textContent = "COLS";
-    btnCols.onclick = function() { AddCOLs(); }; // Llama a la función AddCOLs
+    btnCols.onclick = function() { add_columnas(); }; // Llama a la función add_columnas
     btnColsDiv.appendChild(btnCols);
 
     // Crear input para el número de columnas

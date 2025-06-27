@@ -1,34 +1,44 @@
-//
-/*
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// • CLASS  Head_Drive							► Clase para gestionar el Head de la Web Dinamicametne. 
+// • CLASS  Work_ClassName 						► Clase para gestionar el Head de la Web DInamicamente a nivel de clases para objetos div.
+// • CLASS  Div_X_Div extends Work_ClassName	► Clase principal para la gestión de archivos DIVX.
+// • CLASS  CLASS_navegador						► Detecta navegador y su version.
+// • CLASS  Data_File_Formal					► Estructura de datos para la clase File_Formal.
+// • CLASS  File_Formal							► Trabaja rutas validas.
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+// CONSTANTES GLOBALES PARA CREAR ELEMETOS EN EL HEADER.
+const IDLINK_XDEF 	= 'IDLINK_NONAME';		//EL ID PARA LOS LINK CREADOS...POR DEFECTO 	• • • • [Head_Drive][Work_ClassName]
+const IDSCRIPT_XDEF = 'IDSCRIPT_NONAME';	//EL ID PARA LOS SCRIPT CREADOS...POR DEFECTO   • • • • [Head_Drive]
+
+// CONSTATES DE TAG HEAD DE LINKS Y SCRIPTS
+const CSS_TYPELINK 	= 'text/css';
+const CSS_RELLINK 	= 'stylesheet';
+const CSS_TYPESCRIPT = "text/javascript";
+const CSS_HREF_LINK  = './estilos/styleDvd.css';	//Path al archivo .css POR DEFECTO
+
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+//  C L A S E  		Head_Drive
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+/*	
 	- ■ Clase que tiene que realizar las operaciones sobre el Head...con archivos .css y .src 
 		■ ■ CREA 
 		■ ■ MODIFICA 
 		■ ■ ELIMINA nodos en el HEAD   	
 */
-
-/**
-	 ■ Cuando se instancia esta clase, se genera un Tag Link en el constructor, esto genera:
-			1• un idLink ( 'idLinkHtml_DVD_0' ) 
-			2• un .css  ('./estilos/styleDvd.css' )  ... El css tiene las clases tb ctes 
-	  • • • A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
-	  
-	 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	    <LINK     Id=IDLINK_XDEFLINK  Rel="stylesheet"    Href=CSS_HREFLINK    Type="text/css" /> 
-	 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-*/
-const IDLINK_XDEF = 'IDLINK_NONAME';		//EL ID PARA LOS LINK CREADOS...POR DEFECTO 
-const IDSCRIPT_XDEF = 'IDSCRIPT_NONAME';	//EL ID PARA LOS SCRIPT CREADOS...POR DEFECTO 
-
-const CSS_TYPELINK = 'text/css';
-const CSS_RELLINK = 'stylesheet';
-const CSS_TYPESCRIPT = "text/javascript";
-const CSS_HREF_LINK = './estilos/styleDvd.css';	//Path al archivo .css POR DEFECTO
-
-
-class HEADDRIVE {
-	//
-	tagHEAD = '';		//PARA CACHAR EL HEAD DE LA WEB...O CREAR UNO.
-	bootStrap = {		//datos para incluir BootStrap.
+class Head_Drive {
+	/**
+		 ■ Cuando se instancia esta clase, se genera un Tag-Link en el constructor, esto genera:
+				1• un idLink ( 'idLinkHtml_DVD_0' ) 
+				2• un .css  ('./estilos/styleDvd.css' )  ... El css tiene las clases tb ctes 
+		  • • • A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
+		  
+		 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+			<LINK     Id=IDLINK_XDEFLINK  Rel="stylesheet"    Href=CSS_HREFLINK    Type="text/css" /> 
+		 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	*/
+	tagHEAD = '';		// ► PARA CACHAR EL HEAD DE LA WEB...O CREAR UNO.
+	bootStrap = {		// ► datos para incluir BootStrap.
 		Meta: {
 			name: "viewport",
 			content: "width=device-width, initial-scale=1"
@@ -50,7 +60,7 @@ class HEADDRIVE {
 	* 	Crea una etiqueta <head> en caso de que no hubiera una 
 	*	...y si ya hay un head(lo normal) LO REGISTRA (this.tagHEAD)
 	 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
-	constructor(strUrl_CSS = CSS_HREF_LINK) {
+	constructor() {
 		//constructor() {
 		//if (!strUrl_CSS || typeof (strUrl_CSS) != 'string') strUrl_CSS = CSS_HREF_LINK;
 		//
@@ -61,24 +71,7 @@ class HEADDRIVE {
 		} else {
 			this.tagHEAD = document.getElementsByTagName('HEAD')[0]; // Get HTML head element
 		}
-		//=== CARGA BOOTSTRAP ===================================
-		//:::  https://getbootstrap.com/docs/5.2/ getting-started/introduction/
-		//this._loadNodeBootStrap();
-
-		//
-		//=== TAG <LINK> ========================================
-		//const link = this._crearNodeLINK(strUrl_CSS);
-		//
-		//::: Append link element to HTML head		
-		//this.tagHEAD.appendChild(link);
-		//
-		//
-		//=== INCLUIR EL TAG BOOTSTRAP AQUI =====================
-
-		//
 	}
-	//.........................FIN CONSTRUCTOR..........................
-	//******************************************************************
 
 	/**
 	 * Funcion PPal para añadir un Nodo Script o Link en el Head. Se pueden poner familias de ID.
@@ -87,17 +80,17 @@ class HEADDRIVE {
 	 * @returns el Nodo recien añadido.
 	 * 			false si no se ha podido añadir.
 	 */
-	AddETIQUETA(urlTag = '', id = '') {
+	add_etiqueta(urlTag = '', id = '') {
 		try {
-			const ffURL_ToSearch = new FILEFORMAL(urlTag);		//pruebo a ver si lo introducido es una ruta:
+			const ffURL_ToSearch = new File_Formal(urlTag);		//pruebo a ver si lo introducido es una ruta:
 			if (!ffURL_ToSearch || ffURL_ToSearch.FileData.isValid == false) throw ('Error en el Argumento: [' + urlTag + ']');
 			//
 			const ext = ffURL_ToSearch.FileData.INTRO_extension;
 			switch (ext.toUpperCase()) {
 				case '.JS':
-					return this._addScript(urlTag, id);
+					return this._add_script(urlTag, id);
 				case '.CSS':
-					return this._addLink(urlTag, id);
+					return this._add_link(urlTag, id);
 				default:
 					return false;
 			}
@@ -107,14 +100,14 @@ class HEADDRIVE {
 		}
 	}
 	/**
- * :::: https://html.spec.whatwg.org/multipage/links.htmlbody-ok
- * @param {*} strUrl_CSS 
- * @param {*} sizes 
- * @param {*} ref 
- * @param {*} media 
- * @returns 
- */
-	_addLink(strUrl_CSS = CSS_HREF_LINK, id = '', sizes = '', ref = '', media = '', integrity = '', crossorigin = '') {
+	 * :::: https://html.spec.whatwg.org/multipage/links.htmlbody-ok
+	 * @param {*} strUrl_CSS 
+	 * @param {*} sizes 
+	 * @param {*} ref 
+	 * @param {*} media 
+	 * @returns 
+	 */
+	_add_link(strUrl_CSS = CSS_HREF_LINK, id = '', sizes = '', ref = '', media = '', integrity = '', crossorigin = '') {
 		try {
 			//::: Si no pasa url le asigno './estilos/styleDvd.css'
 			if (!strUrl_CSS || typeof (strUrl_CSS) != 'string') strUrl_CSS = CSS_HREF_LINK;
@@ -124,7 +117,7 @@ class HEADDRIVE {
 			//
 			//::: Append link elemento to HTML Head y retorna el nodo.
 			if (nodeLinkAux == false) {
-				const nodeLink = this._crearNodeLINK(strUrl_CSS, id, sizes, ref, media);			// Create new link Element					
+				const nodeLink = this._crear_node_link(strUrl_CSS, id, sizes, ref, media);			// Create new link Element					
 				if (!nodeLink) return false;
 				//
 				//::: Valida que se meta una extension .css con un nodo Link 
@@ -137,13 +130,13 @@ class HEADDRIVE {
 			}
 			throw ('esta Url LINK ya está cargada. No admito duplicados: [' + strUrl_CSS + ']')
 		} catch (error) {
-			console.log("\n\t---------->Mensaje Error:: CLASE (HEADDRIVE):: METODO (_addLink) ::Mensaje= " + error.message + '\n');
+			console.log("\n\t---------->Mensaje Error:: CLASE (Head_Drive):: METODO (_add_link) ::Mensaje= " + error.message + '\n');
 			return false;
 		}
 	}
 	/**
 	 * La pasas la configuracion de un link y devuelve uno recien creado.
-	 * utilizo la clase FILEFORMAL para validar y usar la ruta introducida.	 * 
+	 * utilizo la clase File_Formal para validar y usar la ruta introducida.	 * 
 	 * @param {*} strUrl_CSS URL del archivo que quieres linkear.
 	 * @param {*} sizes propiedad '.sizes' de los tagElement('LINK')
 	 * @param {*} ref propiedad '.ref' de los tagElement('LINK') 
@@ -151,15 +144,15 @@ class HEADDRIVE {
 	 * @returns false si no se ha podido crear el link(ruta en formato no valido). 
 	 * link en caso de poder crearlo.
 	 */
-	_crearNodeLINK(strUrl_CSS = '', id = '', sizes = '', ref = '', media = '') {
+	_crear_node_link(strUrl_CSS = '', id = '', sizes = '', ref = '', media = '') {
 		try {
 			if (!strUrl_CSS || typeof (strUrl_CSS) != 'string') strUrl_CSS = CSS_HREF_LINK;
 			//
-			//::: Creo la clase FILEFORMAL para trabajar con la url introducida.
-			const ffURL_ToSearch = new FILEFORMAL(strUrl_CSS);	//pruebo a ver si lo introducido es una ruta:
+			//::: Creo la clase File_Formal para trabajar con la url introducida.
+			const ffURL_ToSearch = new File_Formal(strUrl_CSS);	//pruebo a ver si lo introducido es una ruta:
 			if (!ffURL_ToSearch.FileData.isValid) return false;			//validacion de la ruta introducida.
 			//
-			var link = document.createElement('LINK');			// Create new link Element	
+			let link = document.createElement('LINK');			// Create new link Element	
 			//
 			//::: Para introducir un id a mano o si no se introduce cogemos el Xdefecto(IDLINK_XDEF)
 			if (id)
@@ -184,7 +177,7 @@ class HEADDRIVE {
 	}
 	/**
 	 * La pasas la configuracion de un link y devuelve uno recien creado.
-	 * utilizo la clase FILEFORMAL para validar y usar la ruta introducida.	 * 
+	 * utilizo la clase File_Formal para validar y usar la ruta introducida.	 * 
 	 * @param {*} strUrl_CSS URL del archivo que quieres linkear.
 	 * @param {*} sizes propiedad '.sizes' de los tagElement('LINK')
 	 * @param {*} ref propiedad '.ref' de los tagElement('LINK') 
@@ -192,33 +185,33 @@ class HEADDRIVE {
 	 * @returns false si no se ha podido crear el link(ruta en formato no valido). 
 	 * link en caso de poder crearlo.
 	 */
-	_loadNodeBootStrap(objHead = null, objBody = null) {
+	_load_node_BootStrap(objHead = null, objBody = null) {
 		try {
 			if (!strUrl_CSS || typeof (strUrl_CSS) != 'string') strUrl_CSS = CSS_HREF_LINK;
 			//
-			//::: Creo la clase FILEFORMAL para trabajar con la url introducida.
-			const ffURL_ToSearch = new FILEFORMAL(strUrl_CSS);	//pruebo a ver si lo introducido es una ruta:
+			//::: Creo la clase File_Formal para trabajar con la url introducida.
+			const ffURL_ToSearch = new File_Formal(strUrl_CSS);	//pruebo a ver si lo introducido es una ruta:
 			if (!ffURL_ToSearch.FileData.isValid) return false;			//validacion de la ruta introducida.
 			//
-			var bootStrapLINK = document.createElement('LINK');
+			let bootStrapLINK = document.createElement('LINK');
 			bootStrapLINK.rel = this.bootStrap.Link.rel;
 			//bootStrapLINK.integrity = this.bootStrap.Link.integrity;
 			bootStrapLINK.href = this.bootStrap.Link.href;
 			//bootStrapLINK.crossorigin = this.bootStrap.Link.crossorigin;
 			//
-			var bootStrapSCRIPT = document.createElement('SCRIPT');
+			let bootStrapSCRIPT = document.createElement('SCRIPT');
 			bootStrapSCRIPT.src = this.bootStrap.Script.src;
 			//bootStrapSCRIPT.integrity = this.bootStrap.Script.integrity;
 			//bootStrapSCRIPT.crossorigin = this.bootStrap.Script.crossorigin;
 			//
-			var bootStrapMETA = document.createElement('META');
+			let bootStrapMETA = document.createElement('META');
 			bootStrapMETA.name = this.bootStrap.Meta.name;
 			bootStrapMETA.content = this.bootStrap.Meta.content;
 			//
 			//
-			var MetaTags = document.getElementsByTagName('meta');
-			var metaTagLength = MetaTags.length;
-			for (var i = 0; i < metaTagLength; i++) {
+			let MetaTags = document.getElementsByTagName('meta');
+			let metaTagLength = MetaTags.length;
+			for (let i = 0; i < metaTagLength; i++) {
 				console.log(i);
 			}
 
@@ -236,20 +229,25 @@ class HEADDRIVE {
 
 	}
 	/**
-	 * https://developer.mozilla.org/es/docs/Web/SVG/Element/script
-	 * <script type='text/javascript' src='./CLASS_navegador.js'></script>
+	 * @see * https://developer.mozilla.org/es/docs/Web/SVG/Element/script
 	 * @param {*} str_SRC_Script  Url del script(.js)
-	 * @returns false si hay un error estructural.
-	 * 		 null si no se ha podido crear.
-	 * 		 El script creado que se ha metido en el HEAD.
+	 * @param {*} id 
+	 * @param {*} async 
+	 * @param {*} integrity 
+	 * @param {*} crossorigin 
+	 * @called 	► this.add_etiqueta() 
+	 * @example: 	► return this._add_script(str_SRC_Script = urlTag, id);
+	 * @returns 1• False si hay un error estructural.
+	 * 		 	2• null si no se ha podido crear.
+	 * 		 	3• El script creado que se ha metido en el HEAD. ► <script type='text/javascript' src='./CLASS_navegador.js'></script>
 	 */
-	_addScript(str_SRC_Script = '', id = '', async = false, integrity = '', crossorigin = '') {
+	_add_script(str_SRC_Script = '', id = '', async = false, integrity = '', crossorigin = '') {
 		//
 		//::: VALIDA EXISTENCIA DEL ULR (true o false)
 		const nodeScriptAux = this.search(str_SRC_Script);
 		//Posicion del Node dentro de Head.
 		if (nodeScriptAux == false) {
-			const nodeScript = this._crearNodeSCRIPT(str_SRC_Script, id, async, integrity, crossorigin);				//::: Creo un script
+			const nodeScript = this._crear_node_script(str_SRC_Script, id, async, integrity, crossorigin);				//::: Creo un script
 			if (!nodeScript) return false;
 			if (!this._validaExtension_SCRIPT(str_SRC_Script)) return false;
 
@@ -260,16 +258,17 @@ class HEADDRIVE {
 		console.log('Script [' + str_SRC_Script + '] No se ha Cargado, ya estaba entre los Scripts ;) ');
 		return false;
 	}
+	
 	/**
 	 * 
 	 * @param {*} str_SRC_Script propiedad .src del script
 	 * @param {*} id
 	 * @returns 
 	 */
-	_crearNodeSCRIPT(str_SRC_Script = '', id = '', async = false, integrity = '', crossorigin = '') {
+	_crear_node_script(str_SRC_Script = '', id = '', async = false, integrity = '', crossorigin = '') {
 		//
-		//::: Creo la clase FILEFORMAL para trabajar con la url introducida.
-		const ffURL_ToSearch = new FILEFORMAL(str_SRC_Script);	//pruebo a ver si lo introducido es una ruta:
+		//::: Creo la clase File_Formal para trabajar con la url introducida.
+		const ffURL_ToSearch = new File_Formal(str_SRC_Script);	//pruebo a ver si lo introducido es una ruta:
 		if (!ffURL_ToSearch.FileData.isValid) return false;			//validacion de la ruta introducida.
 		//
 		const tagScriptAux = document.createElement("SCRIPT");
@@ -292,10 +291,10 @@ class HEADDRIVE {
 	 * Funcion PPal para añadir un Nodo Title en el Head. 	 * 
 	 * @param {*} strTextoTagTitle (string. El título en sí)
 	 * @param {*} idTitle id de titulo(opcional)
-	 * @param {*} isMachacaSiExiste = false, no machaca el  titulo si ya este existe.
+	 * @param {*} b_machaca = false, no machaca el  titulo si ya este existe.
 	 * 								= true, machacha el titulo aunque exista.
 	 */
-	addTITLE(strTextoTagTitle, idTitle = '', isMachacaSiExiste = false) {
+	addTITLE(strTextoTagTitle, idTitle = '', b_machaca = false) {
 		try {
 			if (!strTextoTagTitle || typeof (strTextoTagTitle) != 'string') throw ('error en el tipo de  Argumento: ');
 			//
@@ -304,8 +303,8 @@ class HEADDRIVE {
 				const tagTitleAux = this._crearNodeTITLE(strTextoTagTitle, idTitle);
 				return tagTitleAux;
 			} else {
-				if (isMachacaSiExiste == false) {
-					throw ('HEADDRIVE::addTITLE::Titulo ya insertado! No quiero duplicados ;(');
+				if (b_machaca == false) {
+					throw ('Head_Drive::addTITLE::Titulo ya insertado! No quiero duplicados ;(');
 				} else {
 					//eliminar el existente.
 					this.tagHEAD.removeChild(tituloEncontrado);
@@ -319,6 +318,7 @@ class HEADDRIVE {
 			return false;
 		}
 	}
+	
 	/**
 	 * 
 	 * @param {*} strTextoTagTitle 
@@ -334,6 +334,7 @@ class HEADDRIVE {
 		console.log('HEADDRIVETITLE::Titulo insertado Ok :)');
 		return tagTitleAux;
 	}
+	
 	/**
 	 * Actualiza una Url(Link o Script) de un Nodo del Head. Se mantiene el ID
 	 * @param {*} strOld ID o String de la ruta de un archivo(.js o .css) que tiene que estar en el Head.
@@ -358,7 +359,7 @@ class HEADDRIVE {
 			return false;
 		}
 		//::::CATCH la extension de la url Nueva...
-		const ffURL_ToSearch = new FILEFORMAL(urlNew);								//pruebo a ver si lo introducido es una ruta:
+		const ffURL_ToSearch = new File_Formal(urlNew);								//pruebo a ver si lo introducido es una ruta:
 		if (!ffURL_ToSearch || ffURL_ToSearch.FileData.isValid == false) return false;		//throw ('Error en el Argumento: ['+strToSearch+']');		 
 		const extensionNodoNuevo = ffURL_ToSearch.FileData.INTRO_extension;
 		//
@@ -367,9 +368,9 @@ class HEADDRIVE {
 		//
 		//::: CREO el nuevo NODO. 
 		if (elNodoViejo.nodeName == 'SCRIPT') {
-			elNodoNuevo = this._crearNodeSCRIPT(ffURL_ToSearch.getUrlRelativa(), elNodoViejo.id, elNodoViejo.async);
+			elNodoNuevo = this._crear_node_script(ffURL_ToSearch.getUrlRelativa(), elNodoViejo.id, elNodoViejo.async);
 		} else if (elNodoViejo.nodeName == 'LINK') {
-			elNodoNuevo = this._crearNodeLINK(ffURL_ToSearch.getUrlRelativa(), elNodoViejo.id, elNodoViejo.sizes, elNodoViejo.ref, elNodoViejo.media);
+			elNodoNuevo = this._crear_node_link(ffURL_ToSearch.getUrlRelativa(), elNodoViejo.id, elNodoViejo.sizes, elNodoViejo.ref, elNodoViejo.media);
 		}
 		//::: Dejo el Id del nodo encontrado, por eso es una actualizacion, cambia todo menos el id.
 		elNodoNuevo.id = elNodoViejo.id;
@@ -377,12 +378,8 @@ class HEADDRIVE {
 		//::: Sustituyo un Nodo por otro.
 		this.tagHEAD.replaceChild(elNodoNuevo, elNodoViejo);	//Reemplazo uno por otro.
 		return elNodoNuevo;
-	}
-	/**
-	 * El objetivo es recibir una url y un nodo del Head y ver si se corresponde la extension del url con la extension del nodo encontrado.
-	 * url puede ser la nueva url a insertar o actualizar y el nodoHead el viejo(actualizar).
-	 * En caso de insercion(no hay node previo)
-	 */
+	}	
+
 	/**
 	 * 
 	 * @param {*} strToSearch String que supuestamente debe contener una Url que 
@@ -393,7 +390,7 @@ class HEADDRIVE {
 		const nodoHead = this.search(strToSearch);
 		if (nodoHead == false) {	//No existe el nodo en el Head...Ergo tampoco ha pasado ID del Head. 
 			//::::Cojo la extension de la url Nueva...
-			const ffURL_ToSearch = new FILEFORMAL(strToSearch);								//pruebo a ver si lo introducido es una ruta:
+			const ffURL_ToSearch = new File_Formal(strToSearch);								//pruebo a ver si lo introducido es una ruta:
 			if (!ffURL_ToSearch || ffURL_ToSearch.FileData.isValid == false) return false;		//throw ('Error en el Argumento: ['+strToSearch+']');		 
 			const extensionNodo = ffURL_ToSearch.FileData.INTRO_extension;
 			if (String(extensionNodo).toUpperCase() == '.CSS') return true;
@@ -421,7 +418,7 @@ class HEADDRIVE {
 		const nodoHead = this.search(strToSearch);
 		if (nodoHead == false) {	//No existe el nodo en el Head...Ergo tampoco ha pasado ID del Head. 
 			//::::Cojo la extension de la url Nueva...
-			const ffURL_ToSearch = new FILEFORMAL(strToSearch);								//pruebo a ver si lo introducido es una ruta:
+			const ffURL_ToSearch = new File_Formal(strToSearch);								//pruebo a ver si lo introducido es una ruta:
 			if (!ffURL_ToSearch || ffURL_ToSearch.FileData.isValid == false) return false;		//throw ('Error en el Argumento: ['+strToSearch+']');		 
 			if (String(ffURL_ToSearch.FileData.INTRO_extension).toUpperCase() == '.JS') return true;
 			return false;
@@ -601,7 +598,7 @@ class HEADDRIVE {
 	_search_ByURL(strToSearch = '') {
 		let childNodes = this.tagHEAD.childNodes;
 		if (!childNodes) return false;					//retorna false si no hay childNodes
-		const ffURL_ToSearch = new FILEFORMAL(strToSearch);	//pruebo a ver si lo introducido es una ruta:		
+		const ffURL_ToSearch = new File_Formal(strToSearch);	//pruebo a ver si lo introducido es una ruta:		
 		if (!ffURL_ToSearch || ffURL_ToSearch.FileData.isValid == false) return false;
 		for (let i = 0; i < childNodes.length; i++) {
 			const nodeNameAux = String(childNodes[i].nodeName).toUpperCase();
@@ -623,7 +620,7 @@ class HEADDRIVE {
 	/**
 	 *  */
 	viewHead() {
-		//var this.tagHEAD = document.getElementsByTagName('HEAD')[0]; // Get HTML head element
+		//let this.tagHEAD = document.getElementsByTagName('HEAD')[0]; // Get HTML head element
 		if (!this.tagHEAD.hasChildNodes) return false;
 		let cuenta = 0;
 		//________________________________________
@@ -846,9 +843,7 @@ class HEADDRIVE {
 		//console.log(textoAux);
 		return textoAux;
 	}
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	//::::::::::::::::::::::::::::::::::::::::::::::::::METODOS COMUNES::::::::::::::::::::::::::::::::::::::::::::::::::
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ████████████████████████████████████████████████████ METODOS COMUNES
 	/**
 	 * Si entra por url valida que es una url Valida con fileFormal
 	 * @param {*} strData ID o URL.
@@ -863,7 +858,7 @@ class HEADDRIVE {
 		const byID = document.getElementById(strData);
 		//::: Pregunto
 		if (!byID) {
-			const byURL = new FILEFORMAL(strData);
+			const byURL = new File_Formal(strData);
 			if (!byURL) return null;		//ni por id ni por url....retorna nulo o error
 			if (byURL.FileData.isValid == true) {
 				return false;	//Entra por URL!! Luego le devuelvo false porque no es por ID, es por una URL valida!!!.
@@ -892,8 +887,8 @@ class HEADDRIVE {
 	//_______________________________________________________
 	//Lo tengo sólo como muestra:?????????????????????????????????????????????????????????????
 	_rutas(strUrl = '') {
-		var r = new RegExp('^(?:[a-z]+:)?//', 'i');
-		var fs = require("fs");
+		let r = new RegExp('^(?:[a-z]+:)?//', 'i');
+		let fs = require("fs");
 		let a = new FileSystemDirectoryHandle();
 
 	}
@@ -901,54 +896,42 @@ class HEADDRIVE {
 
 	}
 
-}////////////////////////////////////////////////////////////////////////////////////////////
-/////// FIN CLASE HEADACHE //////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+}    // █████████████████████  FIN CLASE HEADACHE 
 
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// ******************************** C L A S E  "CLASSNAMER" *********************************
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+//  C L A S E  "Work_ClassName" 
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
-/**________________________________________________________________________________________________
+/**  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	 * Cuando se instancia esta clase, se genera este Tag en el constructor:
-	 * <LINK     Id=IDLINK_XDEF  Rel="stylesheet"    Href=LINK_FILEPATH_XDEF    Type="text/css" /> 
+	 ■■■■ <LINK     Id=IDLINK_XDEF  Rel="stylesheet"    Href=LINK_FILEPATH_XDEF    Type="text/css" />  ■■■■
 	 * Esto genera:
 	 * un idLink constante( 'idLinkHtml_DVD' ) y un .css tb cte('./estilos/styleDvd.css' ):
 	 * El css tiene las clases tb ctes ( )
-	 * A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink Dinamicamente	 * 
-	 *_________________________________________________________________________________________________
+	 * A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink Dinamicamente
+	 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 **/
-/*_____________________
-Métodos de la clase:
-'''''''''''''''''''''''
-constructor(strFilePathCSS){							==>
-_addClaseCSS(classNameCSS){								==> (sin uso)
-_cssSetClass(strClassCssContenedor, strClassCssDIV){	==> (sin uso)
-switchFilePath(pathArchivo='./estilos/styleDvd.css') {	==> (sin uso)
-_setTagLINK(strFilePathCSS=''){				==> crea etiqueta <link>
-cssSetFilePath(strFilePathCSS=''){						==> (sin uso)
-cssImportURL(pathCssFile=CLASSNAMER.LINK_FILEPATH_XDEF){		==> (sin uso)
 
-_get_Secuencial(strAux=IDLINK_XDEF){	==> pasada una cadena calcula su secuencial (sin uso)
-getClassName(a=''){			==>Devuelve el className.
-setClassNameUnique(a=''){	==>Pone nombres únicos a las clases
-***************************************************************************
-addClassName(a=''){			==>Suma un clase en el className.
-searchClassName(a=''){		==>busca una clase en el className.
-switchClassName(a=''){ 		==>Intercambia una clase por otra del className.
-removeClassName(a=''){		==>borra una clase del className
+/* ■■■■■■■■ Métodos de la clase:
+	• constructor( strFilePathCSS ){										►
+	• _addClaseCSS( classNameCSS ){											► (sin uso)
+	• _cssSetClass( strClassCssContenedor, strClassCssDIV ){				► (sin uso)
+	• switch_file_path( pathArchivo = './estilos/styleDvd.css' ) {			► (sin uso)
+	• _setTagLINK( strFilePathCSS = '' ){									► crea etiqueta <link>
+	• cssSetFilePath( strFilePathCSS = '' ){								► (sin uso)
+	• cssImportURL( pathCssFile = Work_ClassName.LINK_FILEPATH_XDEF ){			► (sin uso)
 
-_________________________________________________________________________
-	document.getElementsByClassName('textoClass')[0].style.color='blue'
+	• _get_Secuencial(strAux = IDLINK_XDEF){								► pasada una cadena calcula su secuencial (sin uso)
+	• get_className(a = ''){													► Devuelve el className.
+	• set_className_unique(a = ''){											► Pone nombres únicos a las clases
 
-	las clases son para cada elemento.
-	Los elementos que se manejan son los que se tienen que meter con un array
-*/
-//import { HEADDRIVE } from "./HEADDRIVE.js";
+	• addClassName(a = ''){													► Suma un clase en el className.
+	• search_className(a = ''){												► Busca una clase en el className.
+	• switch_className(a = ''){ 												► Intercambia una clase por otra del className.
+	• elimina_className(a = ''){												► borra una clase del className.
 
-class CLASSNAMER {
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+class Work_ClassName {
 	static CLASSNAME_DIV_XDEF = 'claseDivXdefecto';						//estilo por defecto para div en styleDvd.css
 	static LINK_FILEPATH_XDEF = './estilos/styleDvd.css';				//Path al archivo css que intento cargar dinámicamente.
 	//sin uso.......????????????????????????????????????
@@ -957,40 +940,28 @@ class CLASSNAMER {
 		filePathCSS: '',
 		laClase: [],		//array de string que contiene todas las clases de un fichero .css con un idLink
 	};
-	tagClass = '';		//Un identificador para personalizacion y cruce. 1 por clase.
 	elHEAD = null;
-	/**________________________________________________________________________________________________
-	 * Cuando se instancia esta clase, se genera este Tag en el constructor, esto genera:
-	 * un idLink constante( 'idLinkHtml_DVD' ) y un .css tb cte('./estilos/styleDvd.css' ):
-	 * El css tiene las clases tb ctes ( )
-	 * A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
-	 * 
-	 *_________________________________________________________________________________________________
-	 *     <LINK     Id=IDLINK_XDEF  Rel="stylesheet"    Href=LINK_FILEPATH_XDEF    Type="text/css" /> 
-	 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
-	constructor(strFilePathCSS = CLASSNAMER.LINK_FILEPATH_XDEF) {
+	/** ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	 * Cuando se instancia esta clase, se genera este Tag en el constructor:
+	• un idLink constante( 'idLinkHtml_DVD' ) y un .css tb cte('./estilos/styleDvd.css' ):
+	• El css styleDvd.css tiene el contenido de las clases también ctes ( )
+	..... A partir de aquí se puede cambiar de fichero, cambiar de clases y cambiar de idLink
+	 
+	■■■■■■■■■  < LINK  Id = IDLINK_XDEF  Rel = "stylesheet"  Href = LINK_FILEPATH_XDEF    Type = "text/css" /> 
+	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+	constructor(strFilePathCSS = Work_ClassName.LINK_FILEPATH_XDEF) {
 		if (typeof (strFilePathCSS) != 'string')
-			strFilePathCSS = CLASSNAMER.LINK_FILEPATH_XDEF;
+			strFilePathCSS = Work_ClassName.LINK_FILEPATH_XDEF;
 
 		//super(strFilePathCSS);
-		this.elHEAD = new HEADDRIVE(strFilePathCSS);
-		//
-		//_________________________
-		// Obtiene un IdLink único 
-		let strID_Link = this._get_Secuencial(IDLINK_XDEF);
-		//___________
-		//CREA EL TAG <LINK> POR DEFECTO
-		//super.AddETIQUETA(strFilePathCSS, strID_Link)
-		this.elHEAD.AddETIQUETA(strFilePathCSS, strID_Link)
-
-		/*
-		En pruebas..................*/
-		this.tagClass = '';
-		
+		this.elHEAD = new Head_Drive();
+		// ■■■
+		let strID_Link = this._get_Secuencial(IDLINK_XDEF);		// Obtiene un IdLink único 
+		this.elHEAD.add_etiqueta(strFilePathCSS, strID_Link);	// CREA EL TAG <LINK> POR DEFECTO
 		//
 		console.log(this.verHead());
 
-	}	//FIN CONSTRUCTOR..........................
+	}	
 	/**
 	 * heredado
 	 *  */
@@ -1002,36 +973,35 @@ class CLASSNAMER {
 		return this.elHEAD.viewTagsLINK
 	}
 	/**heredado */
-	isLINK_Load(strLINK_ID = '') {
+	is_link_load(strLINK_ID = '') {
 		return this.elHEAD.search(strLINK_ID)
 	}
-	/**heredado */
-	getArray_IdLINK() {
-		var arrRetorno = [];
+	/**heredado 
+	 * ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+	*/
+	/* getArray_IdLINK() {
+		let arrRetorno = [];
 		let theLinks = document.getElementsByTagName('link');
 		for (let i = 0; i < theLinks.length; i++) {
 			arrRetorno.push(theLinks[i].id);
 		}
 		return arrRetorno;
-	}
+	} */
+	
 	/**
 	 * Entra un PathArchivo que se tiene que buscar entre los files del Head.
-	 * Si se encuentra
-	 * 		valida que tienen la misma extension+
-	 * Si no se encuentra sale y no hace nada.
+	 * IF se encuentra, valida que tienen la misma extension
+	 * IF no se encuentra 	sale y no hace nada.
 	 * @param {*} pathArchivo 
-	 * @returns
-	 * 			false, si algo falla
+	 * @returns null si no se encuentra el archivo.
 	 */
-	switchFilePath(pathArchivo = CLASSNAMER.LINK_FILEPATH_XDEF, newPath = '') {
-		//
+	switch_file_path(pathArchivo = Work_ClassName.LINK_FILEPATH_XDEF, newPath = '') {
 		//Validaciones--------------------------->
 		if (typeof (pathArchivo) != 'string')
 			return false;	
-		//
 		//=== Is Link Load? ===
-		if (this.isLINK_Load(pathArchivo)) {
-			return this.elHEAD.updateURL(pathArchivo, newPath);
+		if (this.is_link_load(pathArchivo)) {
+			return this.elHEAD.switch_file_path(pathArchivo, newPath);
 		}else{
 			return null;
 		}
@@ -1061,7 +1031,7 @@ class CLASSNAMER {
 	 * @returns la cadena className del objeto.
 	 * 			false, si el argumento pasado no se corresponde con un div(ni por id ni por objeto)
 	 */
-	getClassName(obj = null) {
+	get_className(obj = null) {
 		if (typeof (obj) == 'string') {
 			if (!document.getElementById(obj)) {
 				return false;
@@ -1075,27 +1045,29 @@ class CLASSNAMER {
 
 	}
 	/**
-	 * Devuelve el className............ arg ID  
+	 * Devuelve el className............ arg ID  oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} idObject 
 	 * @returns 
 	 */
-	_getClassName_WithID(idObject = '') {
+	_get_className_by_Id(idObject = '') {
 		if (typeof (idObject) != 'string') return false;
 		if (!document.getElementById(idObject)) return null;
 		let aux = document.getElementById(idObject).className;
 		return aux;
 	}
+
 	/**
-	 * Devuelve el className............ arg OBJETO
+	 * Devuelve el className............ arg OBJETOoooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} ObjectArg OBJETO DEL QUE SE QUIERE OBTENER EL CLASSNAME.
 	 * @returns FALSE , si no existe el objeto.
 	 * 			CLASSNAME Del objeto.
 	 */
-	_getClassName_WithObject(ObjectArg = null) {
+	_get_className_by_obj(ObjectArg = null) {
 		if (typeof (ObjectArg) != 'object') return false;
 		if (ObjectArg == null) return false;
 		return ObjectArg.className;
 	}
+
 	/**
 	 * Busca una clase en el className y retorna un booleano SI LA ENCUENTRA.
 	 * @param {*} objDIV Objeto sobre el que se busca la clase.
@@ -1103,7 +1075,7 @@ class CLASSNAMER {
 	 * @returns true, encuentra la clase
 	 * 			false, no encuentra la clase.
 	 */
-	searchClassName(objDIV = null, classNameSearch = '') {
+	search_className(objDIV = null, classNameSearch = '') {
 		if (typeof (classNameSearch) != 'string') return false;
 		if (typeof (objDIV) != 'object') return false;
 		if (objDIV == null) return false;
@@ -1111,7 +1083,6 @@ class CLASSNAMER {
 		if (objDIV.className.indexOf(classNameSearch) < 0) return false;
 		return true;
 	}
-
 	
 	/**
 	 * Establece una clase única, sustituyendo todo lo que hubiera antes ....de Un sólo Objeto 
@@ -1119,7 +1090,7 @@ class CLASSNAMER {
 	 * @param {*} classNameAux 
 	 * @returns 
 	 */
-	setClassNameUnique(objDIV, classNameAux = CLASSNAMER.CLASSNAME_DIV_XDEF) {
+	set_className_unique(objDIV, classNameAux = Work_ClassName.CLASSNAME_DIV_XDEF) {
 		if (typeof (objDIV) != 'object') return false;
 		if (objDIV == null) return false;
 
@@ -1135,49 +1106,51 @@ class CLASSNAMER {
 	 * @param {*} classNameAux 
 	 * @returns 
 	 */
-	sumClassName(objDIV = null, classNameAux = '') {
+	add_className(objDIV = null, classNameAux = '') {
 		if (typeof (classNameAux) != 'string') return false;
 		if (typeof (objDIV) != 'object') return false;
 
 		objDIV.className += ' ' + classNameAux;
 	}
+
 	/**
-	 * Alternar entre dos nombres clase ....de Un sólo Objeto 
+	 * Alternar entre dos nombres clase ....de Un sólo Objeto oooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} objDIV 
 	 * @param {*} oldClassName 
 	 * @param {*} newClassName 
 	 * @returns 
 	 */
-	switchClassName(objDIV = null, oldClassName = '', newClassName = '') {
+	switch_className(objDIV = null, oldClassName = '', newClassName = '') {
 		if (typeof (objDIV) != 'object') return false;
 		if (typeof (oldClassName) != 'string') return false;
 		if (typeof (newClassName) != 'string') return false;
 		//______________________
 		//Proceso:
 		//console.log('Switch Antes)\nclassName de ' + objDIV.id + '->' + objDIV.className); //borrar
-		if (this.searchClassName(objDIV, oldClassName) == true) {
+		if (this.search_className(objDIV, oldClassName) == true) {
 			let classAux = objDIV.className;
 			let aux = classAux.replace(oldClassName, newClassName);
 			objDIV.className = aux;
 		}
 		//console.log('Switch Despues\nclassName de ' + objDIV.id + '->' + objDIV.className)	//borrar
 	}
+
 	/**
 	 * Elimina una clase ...de Un sólo Objeto:
 	 * @param {*} objDIV 
 	 * @param {*} classNameAux 
 	 * @returns 
 	 */
-	removeClassName(objDIV = null, classNameAux = '') {
+	elimina_className(objDIV = null, classNameAux = '') {
 		try {
-			if (this.searchClassName(objDIV, classNameAux) == true) {
+			if (this.search_className(objDIV, classNameAux) == true) {
 				let a = objDIV.className;
 				a = a.replace(classNameAux, '');
 				objDIV.className = a;
 			}
 			return true;
 		} catch (error) {
-			console.log('CLASSNAMER:removeClassName: Error--> ' + error.message);
+			console.log('Work_ClassName:elimina_className: Error--> ' + error.message);
 			return false;
 		}
 	}
@@ -1186,40 +1159,35 @@ class CLASSNAMER {
 	 * @param {*} objDIV 
 	 * @returns 
 	 */
-	resetClassName(objDIV = null) {
+	reset_className(objDIV = null) {
 		if (typeof (objDIV) != 'object') return false;
 		if (objDIV == null) return;
 		objDIV.className = '';
 	}
 	/**
-	 * Asigna el className de un objeto Div a Otro.
+	 * Asigna el className de un objeto Div a Otro.oooooooooooooooooooooooooooooooo
 	 * @param {*} objectModelo 
 	 * @param {*} objectDestino 
 	 */
-	copyPasteClassName(objectModelo, objectDestino) {
-		this.resetClassName(objectDestino);
+	copy_paste_className(objectModelo, objectDestino) {
+		this.reset_className(objectDestino);
 		let strClassNameModelo = objectModelo.claseName
 		objectDestino.claseName = strClassNameModelo + '';
 	}
 
-}////////////////////////////////////////////////////////////////////////////////////////////
-/////// FIN CLASE CLASSNAMER /////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+} // ■■■■■■■ FIN CLASE Work_ClassName 
 
-
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// * C L A S E  "DIVBASE"  	Clase PARA DEFINIR UNA ESTRUCTURA DE DATOS que se usa en la clase DIVXDIV
-// ==========================================================================================
-class DIVBASE {
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * C L A S E  "Base_Div"  				Clase PARA DEFINIR UNA ESTRUCTURA DE DATOS que se usa en la clase Div_X_Div
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+class Base_Div {
 	objDiv;
-	bVisible;			//cada div podrá ser visible o invisible.    
+	bVisible;			// ► cada div podrá ser visible o invisible.    
 	//
 	HOW = {
-		Stt: 0,		//0=todo perfect()
-		Tag: '',		//reserva. 			
-		Flag: 0           //bandera reservada
+		Stt: 0,			// ► 0 = todo perfect()
+		Tag: '',		// ► reserva. 			
+		Flag: 0         // bandera reservada
 	};
 	//Reset.....................
 	constructor(objDiv = null, bVisible = true, Status = 0, Tag = 0, Flag = 0) {
@@ -1230,70 +1198,64 @@ class DIVBASE {
 		this.HOW.Flag = Flag;			//estado inicial del Flag (int)
 
 	};
-}////////////////////////////////////////////////////////////////////////////////////////////
-/////// FIN CLASE CLASS_BASE_DIV ////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+} // ■■■■■■■■■■ FIN CLASE CLASS_BASE_DIV 
 
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// * C L A S E  "DIVXDIV"  	
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * C L A S E  "Div_X_Div"  	
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
 // ::: Clase que mantiene(insertar/editar/eliminar/Buscar/) un Array de Divs en un contenedor.
 //    Cada instancia creada de la clase CLASS_divDvd crea un div en un <Div Contedor> y esta es la base para posteriores inserciones.
 //
 // ::: TODOS LOS DIVS TIENEN LOS MISMOS ESTILOS (CLASSNAME) INICIALMENTE.
 // SE PUEDEN PONER ESTILOS DIFERENTES A CADA DIV DEPENDIENDO DEL FLAG O DEL TAG POSTERIORMENTE.
 //
-// ============================================================
-// * 
-// * Ejemplo de uso:
-// *
 /*
-___________________________________________________
-::: M é t o  d o s   de  la  c l a s e:
-'''''''''''''''''''''''''''''''''''''''''''''''''''
-constructor(IDDIV_Family, idDivCONTENEDOR){ 		==> Crea un Div, un array con un Nombre Unico y cacha un Contenedor (o lo crea)
-addDivs(numDivsAdd=1){	 							==> Crea x Divs
-creaDiv(){ 											==> Crea un sólo div
-//
-SwitchTAG(Tag,intDesde,intHasta){ 				==> Cambia tags de cada Div
-resetTagDiv(){ 									==> Pone el tag de cada div a su valor por defecto(#_)
-verTags(){										==> 
-switchStatus(intStatus,intDesde,intHasta){ 		==> Cambia el status de cada div desde y hasta
-resetStatus(){ 									==> Pone todos los status a 0(ok y listo)
-verStatus(){ 									==> Ver el status de cada Div.
-switchFlag(Flag,intDesde,intHasta){ 			==> Pone banderas desde y hasta 
-resetFlag(){ 									==> pone todas las banderas a 0(estado ini)
-_verFlags(){ 									==> Ver los Flags de cada Div 
-//
-verFamily(){ 									==> console de todos los datos recogidos. 
-switchObjContenedor(idDivCONTENEDOR=''){ 		==> Cambia el Contenedor 
+■■■■■■■■■■■■■■■■■ M é t o  d o s   de  la  c l a s e:
+	• constructor(IDDIV_Family, idDivCONTENEDOR){ 		==> Crea un Div, un array con un Nombre Unico y cacha un Contenedor (o lo crea)
+	• addDivs(numDivsAdd=1){	 							==> Crea x Divs
+	• creaDiv(){ 											==> Crea un sólo div
+	//
+	• SwitchTAG(Tag,intDesde,intHasta){ 				==> Cambia tags de cada Div
+	• resetTagDiv(){ 									==> Pone el tag de cada div a su valor por defecto(#_)
+	• verTags(){										==> 
+	• switchStatus(intStatus,intDesde,intHasta){ 		==> Cambia el status de cada div desde y hasta
+	• resetStatus(){ 									==> Pone todos los status a 0(ok y listo)
+	• verStatus(){ 									==> Ver el status de cada Div.
+	• switchFlag(Flag,intDesde,intHasta){ 			==> Pone banderas desde y hasta 
+	• resetFlag(){ 									==> pone todas las banderas a 0(estado ini)
+	• _verFlags(){ 									==> Ver los Flags de cada Div 
+	//
+	• verFamily(){ 									==> console de todos los datos recogidos. 
+	• switchObjContenedor(idDivCONTENEDOR=''){ 		==> Cambia el Contenedor 
 
-addImgs(strUrlImagen='./'){ 					==> (Sin uso). La idea es pasar una carpeta y cachar sus imagenes.
-_getNuevoIdDiv(){ 								==> Genera el siguiente idDiv a crear.
-_get_Secuencial(strAux){ 						==> Genera el siguiente Id de la cadena pasada .
-getArrObjectBaseDiv(){ 							==> Devuelve el arrayPrincipal
-getArrOnlyDiv(){ 								==>	Devuelve un array solo con los divs de la clase.
-get CONTAINER(){ 								==>	Devuelve el Div Contenedor de la clase.
-get IDDIV_Family(){								==>	Devuelve el ID_Unico 
-get bVisible(){ 								==> Devuelve si es visible GENERAL
-get intStatus(){ 								==> Devuelve el status GENERAL
-get strTag(){ 									==>
-set bVisible(a){ 								==> Tiene que poner todos los divs invisibles.
+	• addImgs(strUrlImagen='./'){ 					==> (Sin uso). La idea es pasar una carpeta y cachar sus imagenes.
+	• _get_new_id(){ 								==> Genera el siguiente idDiv a crear.
+	• _get_Secuencial(strAux){ 						==> Genera el siguiente Id de la cadena pasada .
+	• get_array_Base_Divs(){ 							==> Devuelve el arrayPrincipal
+	• get_array_divs(){ 								==>	Devuelve un array solo con los divs de la clase.
+	• get CONTAINER(){ 								==>	Devuelve el Div Contenedor de la clase.
+	• get IDDIV_Family(){								==>	Devuelve el ID_Unico 
+	• get bVisible(){ 								==> Devuelve si es visible GENERAL
+	• get intStatus(){ 								==> Devuelve el status GENERAL
+	• get strTag(){ 									==>
+		• set bVisible(a){ 								==> Tiene que poner todos los divs invisibles.
 
 /*______________________________________________________________________
  * pejemplo: miObj.divs.crearDiv(' miIdDiv', 'idContenedor1', 100, 50);
  * Crea un div en idContenedor1 en la posicion x,y (100, 50).
  *:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 
-class DIVXDIV extends CLASSNAMER {
+class Div_X_Div extends Work_ClassName {
 	//_____________________	
 	static DIV_NONAME = 'divNONAME';				//Para los div no nombrados explicitamente:
 	static CONTENEDOR_NONAME = 'ContenedorNONAME';	//Cuando se crea una instancia sin contenedor se crea un contenedor de id=ContenedorNONAME_x
 	//___________________________________________
 	//Para los HOW iniciales y para hacer reset de los estados:
 	static PREFIJO_TAG = '#';		//LOS TAG EMPIEZAN POR '#_' 
-	static STATUS_ZERO = 0;		//Base para trabajar con this.arrayCLASS_DIVBASE[i].HOW.intStatus
+	static STATUS_ZERO = 0;		//Base para trabajar con this.array_Base_Divs[i].HOW.intStatus
 	static FLAG_ZERO = 0;			//Una bandera para identificar objetos y darle propiedades.
 	//_________
 	//Para css:
@@ -1303,9 +1265,9 @@ class DIVXDIV extends CLASSNAMER {
 	CONTAINER = null;			//Objeto contenedor de los divs creados y almacenados en arr.	
 	IDDIV_Family = '';			//Nombre a partir del cual se generan todos los ID de los divs.	Id_PATRON_0 , Id_PATRON_1 .....
 	// 
-	FirstDiv = new DIVBASE();	//Primer Div. 
-	//=== ARRAY DE OBJETOS DIVBASE =================================
-	arrayCLASS_DIVBASE = new Array();		//ARRAY PRINCIPAL DE LA CLASE se llena de las INSTANCIAS de la clase 'DIVBASE'. 	
+	FirstDiv = new Base_Div();	//Primer Div. 
+	//=== ARRAY DE OBJETOS Base_Div =================================
+	array_Base_Divs = new Array();		//ARRAY PRINCIPAL DE LA CLASE se llena de las INSTANCIAS de la clase 'Base_Div'. 	
 	//
 	//_____________
 	//Valores Los estados:
@@ -1341,18 +1303,18 @@ class DIVXDIV extends CLASSNAMER {
 		//
 		//::: Si metes Familia lo cacha, si no, familia es 'DIV_NONAME'
 		if (IDDIV_Family == '' || IDDIV_Family == null)
-			this.IDDIV_Family = this._get_Secuencial(DIVXDIV.DIV_NONAME);
+			this.IDDIV_Family = this._get_Secuencial(Div_X_Div.DIV_NONAME);
 		else
 			this.IDDIV_Family = IDDIV_Family;
 		//
 		//
-		let txt = '\n=== INIO CLASE DIVXDIV ===';
+		let txt = '\n=== INIO CLASE Div_X_Div ===';
 		txt +=    '\n==========================';
 		//_______________________________
 		//idDivCONTENEDOR 	
 		if (idDivCONTENEDOR == null || idDivCONTENEDOR == '') {		//........no entra.
 			this.CONTAINER = document.createElement('div');
-			this.CONTAINER.id = this._get_Secuencial(DIVXDIV.CONTENEDOR_NONAME);
+			this.CONTAINER.id = this._get_Secuencial(Div_X_Div.CONTENEDOR_NONAME);
 		} else if (!document.getElementById(idDivCONTENEDOR)) {	//.......entra Y no existe PREVIAMENTE en EL DOC Html. (LO NORMAL)
 			this.CONTAINER = document.createElement('div');
 			this.CONTAINER.id = idDivCONTENEDOR;					
@@ -1368,7 +1330,7 @@ class DIVXDIV extends CLASSNAMER {
 		//=== Estilos ...(de inicio) ====================		
 		//
 		//::: Si el array tiene datos ya, o no tiene datos. 
-		if (this.arrayCLASS_DIVBASE == null || this.arrayCLASS_DIVBASE.length <= 0) {
+		if (this.array_Base_Divs == null || this.array_Base_Divs.length <= 0) {
 			txt += '\n\t===> Familia: ' + IDDIV_Family + ', .... Empieza la Configuracion:';
 		}
 		//===  P r o c e s o: =========================================
@@ -1378,8 +1340,8 @@ class DIVXDIV extends CLASSNAMER {
 		if (this.FirstDiv == false) throw ('Crear Div ... constructor....Error al crear el Div');
 		//
 		//:::Estilos (...de Inicio):
-		super.setClassNameUnique(this.CONTAINER, DIVXDIV.CLASSNAME_CONT_XDEFECTO);
-		super.setClassNameUnique(this.FirstDiv.objDiv, DIVXDIV.CLASSNAME_DIV_XDEF);
+		super.set_className_unique(this.CONTAINER, Div_X_Div.CLASSNAME_CONT_XDEFECTO);
+		super.set_className_unique(this.FirstDiv.objDiv, Div_X_Div.CLASSNAME_DIV_XDEF);
 		//'''''''''''''''''
 		//::: ESTADOS DEL DIV
 		if (typeof (isAllinOne) != 'boolean') isAllinOne = true;
@@ -1389,11 +1351,11 @@ class DIVXDIV extends CLASSNAMER {
 		//::: ESTADOS GENERAL DE TODOS LOS TAGS
 		this.isAllInOne = false;	//TODOS EL MISMO COMPORTAMIENTO....hay que ponerlo a false para que se pueda trabajar con los divs por SEPARADO.
 		this.bVisible = true;		//TODOS VISIBLES O INVISIBLES
-		this.strTag = DIVXDIV.PREFIJO_TAG;		//Se pueden poner nombres identificativos.
+		this.strTag = Div_X_Div.PREFIJO_TAG;		//Se pueden poner nombres identificativos.
 		this.intStatus = 0;					//para definir los estados. No está especificado.
 		this.Flag = 0;						//banderas identificativas numéricas.
 		//
-		//super.setClassNameUnique();
+		//super.set_className_unique();
 		//
 
 		txt += '\n\tFamilia ( ' + this.IDDIV_Family + ' )............................................load OK!!';
@@ -1419,7 +1381,7 @@ class DIVXDIV extends CLASSNAMER {
 	*/
 	addDivsCreaDiv(numDivsAdd = 1) {
 		if (numDivsAdd <= 0) numDivsAdd = 1;		//valida el número de divs a crear.	
-		for (var i = 0; i < numDivsAdd; i++) {
+		for (let i = 0; i < numDivsAdd; i++) {
 			this.creaDiv();
 		}
 		console.log(this.IDDIV_Family + '|' + this.CONTAINER.id + '|' + numDivsAdd + ' Divs add....OK');
@@ -1433,12 +1395,12 @@ class DIVXDIV extends CLASSNAMER {
 	AddDivs(numClones = 1) {
 		try {
 			if (typeof (numClones) != 'number') return false;
-			if (numClones <= 0) throw ('.....DIVXDIV....AddDivs....Error entrada ' + numClones);
+			if (numClones <= 0) throw ('.....Div_X_Div....AddDivs....Error entrada ' + numClones);
 			//
 			let theClon;
 			for (let i = 0; i < numClones; i++) {
 				theClon = this.creaClon();
-				if (theClon == false) throw ('.....DIVXDIV....AddDivs....al Crear el clon. Item: ' + i);
+				if (theClon == false) throw ('.....Div_X_Div....AddDivs....al Crear el clon. Item: ' + i);
 
 				console.log('...DIV CREADO!!--> Item: (' + i + ')\t ' + theClon.objDiv.id);
 
@@ -1461,17 +1423,17 @@ class DIVXDIV extends CLASSNAMER {
 				intItemDesde = 0;
 			else if (intItemDesde <= 0)
 				intItemDesde = 0;
-			else if (intItemDesde >= this.arrayCLASS_DIVBASE.length) {
+			else if (intItemDesde >= this.array_Base_Divs.length) {
 				if (intItemHasta == null) {
-					intItemHasta = this.arrayCLASS_DIVBASE.length;
-					intItemDesde = this.arrayCLASS_DIVBASE.length - 1;
+					intItemHasta = this.array_Base_Divs.length;
+					intItemDesde = this.array_Base_Divs.length - 1;
 				}
 			}
 			//
 			if (intItemHasta < 0)
 				intItemHasta = intItemDesde + 1;
-			else if (intItemHasta > this.arrayCLASS_DIVBASE.length)
-				intItemHasta = this.arrayCLASS_DIVBASE.length;
+			else if (intItemHasta > this.array_Base_Divs.length)
+				intItemHasta = this.array_Base_Divs.length;
 			else if (typeof (intItemHasta) != 'number')
 				intItemHasta = intItemDesde + 1;
 			else
@@ -1479,12 +1441,12 @@ class DIVXDIV extends CLASSNAMER {
 			//
 			//Elimina los divs del contenedor:
 			for (let i = intItemDesde; i < intItemHasta; i++) {
-				this.CONTAINER.removeChild(this.arrayCLASS_DIVBASE[i].objDiv);
+				this.CONTAINER.removeChild(this.array_Base_Divs[i].objDiv);
 			}
 			//
 			//Preparo la variable intItemHasta para eliminar los divs del Array con splice:
 			intItemHasta = intItemHasta - intItemDesde;
-			let arrAux2 = this.arrayCLASS_DIVBASE.splice(intItemDesde, intItemHasta);	//elimina uno x.			
+			let arrAux2 = this.array_Base_Divs.splice(intItemDesde, intItemHasta);	//elimina uno x.			
 			//
 			console.log('\n.........'+arrAux2.length+' divs Muertos');
 			return arrAux2;
@@ -1500,15 +1462,15 @@ class DIVXDIV extends CLASSNAMER {
 		try {
 			//___________________________________________
 			//1)-Instancia de la clase que voy a guardar en el array.
-			const yyy = new DIVBASE();
+			const yyy = new Base_Div();
 			//2)________________________________________
 			yyy.objDiv = document.createElement('div'); 		//Crea un div.
-			yyy.objDiv.id = this._getNuevoIdDiv();				//Le pongo un Id.
+			yyy.objDiv.id = this._get_new_id();				//Le pongo un Id.
 			//3)________________________________________
 			//Cargo las propiedades Por defecto del objeto:	
 			yyy.bVisible = true;
 			//Estados:
-			yyy.HOW.Tag = DIVXDIV.PREFIJO_TAG;
+			yyy.HOW.Tag = Div_X_Div.PREFIJO_TAG;
 			yyy.HOW.Stt = 0;
 			yyy.HOW.Flag = 0;
 			//__________________________________________
@@ -1516,7 +1478,7 @@ class DIVXDIV extends CLASSNAMER {
 			this.CONTAINER.appendChild(yyy.objDiv);
 			//__________________________________________
 			//5)-Meto el objeto en el array:
-			this.arrayCLASS_DIVBASE.push(yyy);
+			this.array_Base_Divs.push(yyy);
 			//?????????????????????????????????????????????????????????????????????????????????????????
 			//
 			//Algunos estilos para que se vean los divs creados..................(revisar y eliminar)
@@ -1541,7 +1503,7 @@ class DIVXDIV extends CLASSNAMER {
 		//if(!document.getElementById(idContenedor)) return false;
 		try {
 			//Creacion del clon.
-			var elClon = this.FirstDiv.objDiv.cloneNode(true);
+			let elClon = this.FirstDiv.objDiv.cloneNode(true);
 			elClon.id = this._get_Secuencial(this.IDDIV_Family);
 			//
 			if (!elClon.id) throw ("Error creaClon() CLON");
@@ -1554,16 +1516,16 @@ class DIVXDIV extends CLASSNAMER {
 			 * '''''''''''''''''''''''''''''''''''''''*/
 			//___________________________________________
 			//-Creo una instancia de la clase que voy a guardar en el array.
-			const yyy = new DIVBASE();
+			const yyy = new Base_Div();
 			yyy.objDiv = elClon;
 			yyy.bVisible = true;
 			//
-			yyy.HOW.Tag = DIVXDIV.PREFIJO_TAG;
+			yyy.HOW.Tag = Div_X_Div.PREFIJO_TAG;
 			yyy.HOW.Stt = 0;
 			yyy.HOW.Flag = 0;
 			//__________________________________________
 			//-Meto el objeto en el array:
-			this.arrayCLASS_DIVBASE.push(yyy);
+			this.array_Base_Divs.push(yyy);
 			//
 			//Algunos estilos para que se vean los divs creados..................(revisar y eliminar)
 			//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -1576,66 +1538,66 @@ class DIVXDIV extends CLASSNAMER {
 		}
 	}
 	/**
-	 * Cambia los TAG de los divs del array para poder luego hacer cosas con ellos
+	 * Cambia los TAG de los divs del array para poder luego hacer cosas con ellosooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} Tag 
 	 * @param {*} intDesde 
 	 * @param {*} intHasta 
 	 * @returns 
 	 */
-	SwitchTAG(Tag = '', intDesde = 0, intHasta = parseInt(this.arrayCLASS_DIVBASE.length - 1)) {
+	SwitchTAG(Tag = '', intDesde = 0, intHasta = parseInt(this.array_Base_Divs.length - 1)) {
 		if (typeof (Tag) != 'string' || Tag == '') return false;
 
 		if (typeof (intDesde) != 'number') intDesde = 0;
-		if (intDesde >= this.arrayCLASS_DIVBASE.length || intDesde < 0) return false;
-		if (typeof (intHasta) != 'number') intHasta = this.arrayCLASS_DIVBASE.length - 1;
-		if (intHasta >= this.arrayCLASS_DIVBASE.length || intHasta < 0) intHasta = this.arrayCLASS_DIVBASE.length - 1;
+		if (intDesde >= this.array_Base_Divs.length || intDesde < 0) return false;
+		if (typeof (intHasta) != 'number') intHasta = this.array_Base_Divs.length - 1;
+		if (intHasta >= this.array_Base_Divs.length || intHasta < 0) intHasta = this.array_Base_Divs.length - 1;
 		if (intDesde > intHasta) return false;
 		//Proceso. 
-		const posicionPref = Tag.indexOf(DIVXDIV.PREFIJO_TAG);
+		const posicionPref = Tag.indexOf(Div_X_Div.PREFIJO_TAG);
 		if (posicionPref == -1) {
 			//no trae el prefijo.
-			Tag = DIVXDIV.PREFIJO_TAG + Tag;
+			Tag = Div_X_Div.PREFIJO_TAG + Tag;
 		} else {
 			//trae el prefijo
 			if (posicionPref == 0) {
 				//correcto
 			} else {
 				//trae el prefijo pero No al principio. Se lo pongo.
-				Tag = DIVXDIV.PREFIJO_TAG + Tag;
+				Tag = Div_X_Div.PREFIJO_TAG + Tag;
 			}
 
 		}
 		for (let i = intDesde; i <= intHasta; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Tag = Tag;
+			this.array_Base_Divs[i].HOW.Tag = Tag;
 		}
 		return true;
 	}
 	/**
 	 * resetea la variable de clase .HOW.Tag (Los Tags de la clase) con objetivo de 
-	 * buscar tags en aplicacion posterior.
+	 * buscar tags en aplicacion posterior.oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 */
 	resetTagDiv() {
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Tag = DIVXDIV.PREFIJO_TAG;
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			this.array_Base_Divs[i].HOW.Tag = Div_X_Div.PREFIJO_TAG;
 		}
 
 	}
 	/**
-	 * Mensaje por consola de los tags de la clase. Para el programador.
+	 * Mensaje por consola de los tags de la clase. Para el programador.ooooooooooooooooooooooooooooooooooooo
 	 */
 	verTags() {
 		let txt = '\n=== VER TAGS ===\n' +
 			'================\n' +
 			this.CONTAINER.id + '|' + this.IDDIV_Family + '\n';
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			txt += '\t[' + i + ']-> ' + this.arrayCLASS_DIVBASE[i].HOW.Tag + '\n';
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			txt += '\t[' + i + ']-> ' + this.array_Base_Divs[i].HOW.Tag + '\n';
 		}
 		txt += '\n--- FIN -----------------------\n';
 		return txt;
 	}
 	/**
 	 * 
-	 * @param {*} elTag , String con el nombre del tag a buscar.
+	 * @param {*} elTag , String con el nombre del tag a buscar.oooooooooooooooooooooooooooooooooooooooooooo
 	 * @returns , array con las posiciones en el array que Tienen el Tag pasado
 	 * 			, false si hay algun error
 	 */
@@ -1644,50 +1606,50 @@ class DIVXDIV extends CLASSNAMER {
 		if (typeof (elTag) != 'string' || elTag == '') return false;
 		elTag = this._withOrWithOut_PrefijoTag(elTag);
 		//		
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			let unTag = this.arrayCLASS_DIVBASE[i].HOW.Tag;
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			let unTag = this.array_Base_Divs[i].HOW.Tag;
 			if (unTag == elTag) {
-				arrayReturn.push(this.arrayCLASS_DIVBASE[i].objDiv);
+				arrayReturn.push(this.array_Base_Divs[i].objDiv);
 			}
 		}
 		return arrayReturn;
 	}
 	/**
 	 * 
-	 * @returns Array con los Divs de la Clase DIVBASE
+	 * @returns Array con los Divs de la Clase Base_Divooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 */
 	getArrayDIVS(){
 		let arrayReturn = [];
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			arrayReturn.push(this.arrayCLASS_DIVBASE[i].objDiv);
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			arrayReturn.push(this.array_Base_Divs[i].objDiv);
 		}
 		return arrayReturn;
 	}
 	/**
-	 * 
+	 * ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} intStatus 
 	 * @param {*} intDesde 
 	 * @param {*} intHasta 
 	 * @returns 
 	 */
-	switchStatus(intStatus = 0, intDesde = 0, intHasta = parseInt(this.arrayCLASS_DIVBASE.length - 1)) {
+	switchStatus(intStatus = 0, intDesde = 0, intHasta = parseInt(this.array_Base_Divs.length - 1)) {
 		if (typeof (intStatus) != 'number') return false;
 		if (intDesde > intHasta) return false;
-		if (intDesde >= this.arrayCLASS_DIVBASE.length) return false;
+		if (intDesde >= this.array_Base_Divs.length) return false;
 		if (typeof (intDesde) != 'number' || intDesde <= 0) intDesde = 0;
-		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.arrayCLASS_DIVBASE.length - 1;
-		if (intHasta >= this.arrayCLASS_DIVBASE.length) intHasta = this.arrayCLASS_DIVBASE.length - 1;
+		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.array_Base_Divs.length - 1;
+		if (intHasta >= this.array_Base_Divs.length) intHasta = this.array_Base_Divs.length - 1;
 		//Proceso. 
 		for (let i = intDesde; i <= intHasta; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Stt = intStatus;
+			this.array_Base_Divs[i].HOW.Stt = intStatus;
 		}
 
 	}
 	//
-	//Limpia el Status sobre cada elemento de la clase DIVXDIV.
+	//Limpia el Status sobre cada elemento de la clase Div_X_Div.ooooooooooooooooooooooooooooooooooooooooooooooooooo
 	resetStatus() {
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Stt = DIVXDIV.STATUS_ZERO;
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			this.array_Base_Divs[i].HOW.Stt = Div_X_Div.STATUS_ZERO;
 		}
 	}
 	/**
@@ -1697,8 +1659,8 @@ class DIVXDIV extends CLASSNAMER {
 		let txt = '=== VER STATUS ===\n' +
 			'==================\n' +
 			this.CONTAINER.id + '\n';
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			txt += '\t[' + i + ']-> ' + this.arrayCLASS_DIVBASE[i].HOW.Stt + '\n';
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			txt += '\t[' + i + ']-> ' + this.array_Base_Divs[i].HOW.Stt + '\n';
 		}
 		txt += '\n--- FIN -----------------------------------\n';
 		return txt;
@@ -1706,57 +1668,57 @@ class DIVXDIV extends CLASSNAMER {
 	/**
 	 * 
 	 * @param {*} elStatusToSearch , String con el nombre del tag a buscar.
-	 * @returns , array con las posiciones en el array que Tienen el Tag pasado
+	 * @returns , array con las posiciones en el array que Tienen el Tag pasadooooooooooooooooooooooooooooooooooooooooooooo
 	 * 			, false si hay algun error
 	 */
 	searchSTATUS(elStatusToSearch = 0) {
 		arrayReturn = [];
 		if (typeof (elStatusToSearch) != 'number') return false;
 		//
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			if (this.arrayCLASS_DIVBASE[i].HOW.Stt == elStatusToSearch) {
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			if (this.array_Base_Divs[i].HOW.Stt == elStatusToSearch) {
 				arrayReturn.push(i);
 			}
 		}
 		return arrayReturn;
 	}
 	/**
-	 * 
+	 * ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} Flag 
 	 * @param {*} intDesde 
 	 * @param {*} intHasta 
 	 * @returns 
 	 */
-	switchFlag(Flag = 0, intDesde = 0, intHasta = parseInt(this.arrayCLASS_DIVBASE.length - 1)) {
+	switchFlag(Flag = 0, intDesde = 0, intHasta = parseInt(this.array_Base_Divs.length - 1)) {
 		if (typeof (Flag) != 'number') return false;
 		if (intDesde > intHasta) return false;
-		if (intDesde >= this.arrayCLASS_DIVBASE.length) return false;
+		if (intDesde >= this.array_Base_Divs.length) return false;
 		if (typeof (intDesde) != 'number' || intDesde <= 0) intDesde = 0;
-		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.arrayCLASS_DIVBASE.length - 1;
-		if (intHasta >= this.arrayCLASS_DIVBASE.length) intHasta = this.arrayCLASS_DIVBASE.length - 1;
+		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.array_Base_Divs.length - 1;
+		if (intHasta >= this.array_Base_Divs.length) intHasta = this.array_Base_Divs.length - 1;
 		//Proceso. 
 		for (let i = intDesde; i <= intHasta; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Flag = Flag;
+			this.array_Base_Divs[i].HOW.Flag = Flag;
 		}
 	}
 	/**
-	 * Limpia el Status sobre cada elemento de la clase DIVXDIV.
+	 * Limpia el Status sobre cada elemento de la clase Div_X_Div.ooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 */
 	resetFlag() {
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			this.arrayCLASS_DIVBASE[i].HOW.Flag = DIVXDIV.FLAG_ZERO;
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			this.array_Base_Divs[i].HOW.Flag = Div_X_Div.FLAG_ZERO;
 		}
 	}
 	/**
-	 * Mensaje por consola de STATUS de la clase. Para el programador.
+	 * Mensaje por consola de STATUS de la clase. Para el programador.oooooooooooooooooooooooooooooooooooooooooooooo
 	 * @returns 
 	 */
 	verFlags() {
 		let txt = '\n=== VER FLAGS===' +
 			'\n================\n' +
 			'( ' + this.CONTAINER.id + '\n )';
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			txt += '\t[' + i + ']->' + this.arrayCLASS_DIVBASE[i].HOW.Flag + '\n';
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			txt += '\t[' + i + ']->' + this.array_Base_Divs[i].HOW.Flag + '\n';
 		}
 		txt += '\n--- FIN -----------------------------------\n';
 		return txt;
@@ -1764,22 +1726,22 @@ class DIVXDIV extends CLASSNAMER {
 	/**
 	 * 
 	 * @param {*} elStatusToSearch , String con el nombre del tag a buscar.
-	 * @returns , array con las posiciones en el array que Tienen el Tag pasado
+	 * @returns , array con las posiciones en el array que Tienen el Tag pasadooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * 			, false si hay algun error
 	 */
 	searchFLAG(elFlagToSearch = 0) {
 		arrayReturn = [];
 		if (typeof (elFlagToSearch) != 'number') return false;
 		//
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			if (this.arrayCLASS_DIVBASE[i].HOW.Flag == elFlagToSearch) {
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			if (this.array_Base_Divs[i].HOW.Flag == elFlagToSearch) {
 				arrayReturn.push(i);
 			}
 		}
 		return arrayReturn;
 	}
 	/**
-	 * Devuelve string con  un MAPA de la CLASE CON TODAS LAS VARIABLES.
+	 * Devuelve string con  un MAPA de la CLASE CON TODAS LAS VARIABLES.ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @returns 
 	 */
 	verFamily() {
@@ -1788,8 +1750,8 @@ class DIVXDIV extends CLASSNAMER {
 			'\n\tFAMILY: ' + this.IDDIV_Family +
 			'\n\tId CONTENEDOR: ' + this.CONTAINER.id +
 			'\n\tId EL PRIMERIZO: ' + this.FirstDiv.objDiv.id +
-			'\n\tClassName CONTENEDOR: ' + super.getClassName(this.CONTAINER) +
-			'\n\tFAMILIA CON  (' + this.arrayCLASS_DIVBASE.length + ') elementos' +
+			'\n\tClassName CONTENEDOR: ' + super.get_className(this.CONTAINER) +
+			'\n\tFAMILIA CON  (' + this.array_Base_Divs.length + ') elementos' +
 			'\n\tAllinOne?= ' + this.isAllInOne + '\t' +
 			'|Visible?= ' + this.bVisible + '\t' +
 			'\n\t|Tag?= ' + this.strTag + '' +
@@ -1797,18 +1759,20 @@ class DIVXDIV extends CLASSNAMER {
 			'\n\t|Status?: ' + this.intStatus + '' +
 			'\n--- FIN -----------------------------------\n');
 
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
 			txt += '\n' + this.IDDIV_Family + ' index: [' + i + ']-->' +
-				'\n\t|ID= ' + this.arrayCLASS_DIVBASE[i].objDiv.id +
-				'\n\t|className=' + super.getClassName(this.arrayCLASS_DIVBASE[i].objDiv) +
-				'\n\t|esVisible?=' + this.arrayCLASS_DIVBASE[i].bVisible +
-				'\n\t|Status: ' + this.arrayCLASS_DIVBASE[i].HOW.Stt +
-				'\n\t|Tag: ' + this.arrayCLASS_DIVBASE[i].HOW.Tag +
-				'\n\t|Flag: ' + this.arrayCLASS_DIVBASE[i].HOW.Flag + '\n';
+				'\n\t|ID= ' + this.array_Base_Divs[i].objDiv.id +
+				'\n\t|className=' + super.get_className(this.array_Base_Divs[i].objDiv) +
+				'\n\t|esVisible?=' + this.array_Base_Divs[i].bVisible +
+				'\n\t|Status: ' + this.array_Base_Divs[i].HOW.Stt +
+				'\n\t|Tag: ' + this.array_Base_Divs[i].HOW.Tag +
+				'\n\t|Flag: ' + this.array_Base_Divs[i].HOW.Flag + '\n';
 		}
 		return txt;
 	}
 	/**
+	 * oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+	 * 
 	 * @param {* Cambia Todos los Divs de Contenedor} idDivCONTENEDOR id de un Contenedor que tiene que existir o document.body * 
 	 * @param {* =true, Borra el anterior Contenedor} isDeleteEmpty id de un Contenedor válido o document.body * 
 	 * 
@@ -1826,12 +1790,12 @@ class DIVXDIV extends CLASSNAMER {
 		//
 		if (typeof (isDeleteEmpty) != 'boolean') isDeleteEmpty = false;
 		//
-		//1)-Quito los divs(this.arrayCLASS_DIVBASE[i].objDiv) del contenedor de la clase.
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			this.CONTAINER.removeChild(this.arrayCLASS_DIVBASE[i].objDiv);
+		//1)-Quito los divs(this.array_Base_Divs[i].objDiv) del contenedor de la clase.
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			this.CONTAINER.removeChild(this.array_Base_Divs[i].objDiv);
 		}
 		//
-		//super.copyPasteClassName(this.CONTAINER, document.getElementById(idDivCONTENEDOR));
+		//super.copy_paste_className(this.CONTAINER, document.getElementById(idDivCONTENEDOR));
 		let a = this.CONTAINER.className;
 		let b = this.CONTAINER;
 		//
@@ -1840,10 +1804,10 @@ class DIVXDIV extends CLASSNAMER {
 		this.CONTAINER = document.getElementById(idDivCONTENEDOR);
 		this.CONTAINER.className = a;
 		//
-		//3)-Añado al nuevo contenedor(this.CONTAINER) los divs del array(this.arrayCLASS_DIVBASE[i].objDiv)
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			this.CONTAINER.appendChild(this.arrayCLASS_DIVBASE[i].objDiv);
-			//super.copyPasteClassName()
+		//3)-Añado al nuevo contenedor(this.CONTAINER) los divs del array(this.array_Base_Divs[i].objDiv)
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			this.CONTAINER.appendChild(this.array_Base_Divs[i].objDiv);
+			//super.copy_paste_className()
 		}
 		if (isDeleteEmpty == true) {
 			b.parentNode.removeChild(b);
@@ -1852,7 +1816,7 @@ class DIVXDIV extends CLASSNAMER {
 	} 	//fin addContenedor***************************************************
 
 	/**
-	 * 
+	 * ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} strUrlImagen 
 	 * @returns 
 	 */
@@ -1871,12 +1835,12 @@ class DIVXDIV extends CLASSNAMER {
 	 * NOMBREB_NUMERO=		MiDivBase_0/MiDivBase_1/MiDivBase_2......
 	 * @returns 
 	 */
-	_getNuevoIdDiv() {
+	_get_new_id() {
 		let strAux = '';
-		strAux = this.IDDIV_Family + '_' + this.arrayCLASS_DIVBASE.length;
+		strAux = this.IDDIV_Family + '_' + this.array_Base_Divs.length;
 		//
 		if (!document.getElementById(strAux))
-			return this.IDDIV_Family + '_' + this.arrayCLASS_DIVBASE.length;
+			return this.IDDIV_Family + '_' + this.array_Base_Divs.length;
 		else
 			return false;
 	}
@@ -1886,7 +1850,7 @@ class DIVXDIV extends CLASSNAMER {
 	 * @param {*} strAux 
 	 * @returns 
 	 */
-	_get_Secuencial(strAux = DIVXDIV.CONTENEDOR_NONAME) {
+	_get_Secuencial(strAux = Div_X_Div.CONTENEDOR_NONAME) {
 		//Validacion de los argumentos:.............>
 		if (typeof (strAux) != 'string') return false;
 		if (strAux.length <= 2) return false;	//mínimo 2 letras.
@@ -1898,14 +1862,14 @@ class DIVXDIV extends CLASSNAMER {
 		}
 	}
 	/**
-	 * GET LA MATRIZ DE OBJETOS 
+	 * GET LA MATRIZ DE OBJETOS oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @returns 
 	 */
-	getArrObjectBaseDiv() {
-		if (this.arrayCLASS_DIVBASE == null) return null;
-		if (typeof (this.arrayCLASS_DIVBASE) != 'object') return null;
-		if (this.arrayCLASS_DIVBASE instanceof Array)
-			return this.arrayCLASS_DIVBASE;
+	get_array_Base_Divs() {
+		if (this.array_Base_Divs == null) return null;
+		if (typeof (this.array_Base_Divs) != 'object') return null;
+		if (this.array_Base_Divs instanceof Array)
+			return this.array_Base_Divs;
 		return null;
 	}
 
@@ -1913,10 +1877,10 @@ class DIVXDIV extends CLASSNAMER {
 	 * Devuelve un array con sólo los divs añadidos.
 	 * @returns 
 	 */
-	getArrOnlyDiv() {
-		var divAux = [];
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			divAux[i] = this.arrayCLASS_DIVBASE[i].objDiv;
+	get_array_divs() {
+		let divAux = [];
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			divAux[i] = this.array_Base_Divs[i].objDiv;
 		}
 		return divAux;
 	}
@@ -1927,7 +1891,7 @@ class DIVXDIV extends CLASSNAMER {
 					 * ''''''''''''''''''''''''''''''''''*/
 
 	/**
-	 * Hace switch Visible el Contenedor de la Legior
+	 * Hace switch Visible el Contenedor de la Legior oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 */
 	cssSwitchContenedorVisible() {
 		if (this.bVisible == true) {
@@ -1940,20 +1904,20 @@ class DIVXDIV extends CLASSNAMER {
 		//this.CONTAINER
 	}
 	/**
-	 * Establece una clase única para todos los Divs
+	 * Establece una clase única para todos los Divsoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} strClassName 
 	 * @param {*} isContenedor  false, pone todos los Divs sólo con esa clase.
 	 * 							true, pone clase unica sólo al Contenedor.
 	 * @returns 
 	 */
-	cssSetClassNameUnique(strClassName = '', isContenedor = false) {
+	set_className_unique(strClassName = '', isContenedor = false) {
 		if (typeof (strClassName) != 'string') return false;
 		if (strClassName == null || strClassName == '') return false;
 		//
 		if (typeof (isContenedor) != 'boolean') isContenedor = false;
 		//
 		if (isContenedor == true) {
-			if (super.setClassNameUnique(this.CONTAINER, strClassName) == true) {
+			if (super.set_className_unique(this.CONTAINER, strClassName) == true) {
 				console.log('\n');
 				console.log('*)Classname <' + strClassName + '> asignada con exito al Contenedor: ' + this.CONTAINER.id);
 				console.log('\n');
@@ -1962,8 +1926,8 @@ class DIVXDIV extends CLASSNAMER {
 			}
 			return;
 		}
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			if (super.setClassNameUnique(this.arrayCLASS_DIVBASE[i].objDiv, strClassName) == true) {
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			if (super.set_className_unique(this.array_Base_Divs[i].objDiv, strClassName) == true) {
 				console.log(strClassName + ' asignada con exito al Div: ' + this.CONTAINER.id);
 			} else {
 				console.log('Error al asignar la clase' + strClassName + ' al Div: ' + this.CONTAINER.id);
@@ -1975,14 +1939,14 @@ class DIVXDIV extends CLASSNAMER {
 	 * @param {*} isContenedor 
 	 * @returns 
 	 */
-	cssResetClassName(isContenedor = false) {
+	reset_className(isContenedor = false) {
 		if (typeof (isContenedor) != 'boolean') isContenedor = false;
 		if (isContenedor == true) {
-			super.resetClassName(this.CONTAINER);
+			super.reset_className(this.CONTAINER);
 			return;
 		}
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			super.resetClassName(this.arrayCLASS_DIVBASE[i].objDiv);
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			super.reset_className(this.array_Base_Divs[i].objDiv);
 		}
 	}
 	/**
@@ -1993,7 +1957,7 @@ class DIVXDIV extends CLASSNAMER {
 	 * @param {*} bIAmContainer 
 	 * @returns 
 	 */
-	cssAddClassName(strClassNameToAdd = '', bIAmContainer = false) {
+	add_className(strClassNameToAdd = '', bIAmContainer = false) {
 		if (typeof (strClassNameToAdd) != 'string' || strClassNameToAdd == '') return false;
 		if (typeof (bIAmContainer) != 'boolean') bIAmContainer = false;
 		//
@@ -2002,17 +1966,17 @@ class DIVXDIV extends CLASSNAMER {
 		//::: Recorrer el array de palabras 
 		//
 		if (bIAmContainer == true) {
-			super.sumClassName(this.CONTAINER, strClassNameToAdd);
+			super.add_className(this.CONTAINER, strClassNameToAdd);
 			return;
 		} else {
-			//super.sumClassName(this.arrayCLASS_DIVBASE[i].objDiv, strClassNameToAdd);
-			for (let j = 0; j < this.arrayCLASS_DIVBASE.length; j++) {
-				let arrClassNames = this._getArraySplit(strClassNameToAdd);
+			//super.add_className(this.array_Base_Divs[i].objDiv, strClassNameToAdd);
+			for (let j = 0; j < this.array_Base_Divs.length; j++) {
+				let arrClassNames = this._get_array_classNames(strClassNameToAdd);
 				if (!arrClassNames) {
 					//error
 				} else {
 					for (let i = 0; i < arrClassNames.length; i++) {
-						super.sumClassName(this.arrayCLASS_DIVBASE[j].objDiv, arrClassNames[i]);
+						super.add_className(this.array_Base_Divs[j].objDiv, arrClassNames[i]);
 					}
 				}
 			}
@@ -2022,7 +1986,7 @@ class DIVXDIV extends CLASSNAMER {
 	 * @param {*} cadenaToArraizar cadea que tienes que convertir en un array de retorno.
 	 * @returns Array Split Slash('/'), filtrado sin espacios vacios.
 	 */
-	_getArraySplit(cadenaToArraizar = '') {
+	_get_array_classNames(cadenaToArraizar = '') {
 		if (!cadenaToArraizar) return false;
 		if (typeof (cadenaToArraizar) != 'string') return false;
 		const arrSplit = cadenaToArraizar.split(' ');
@@ -2030,13 +1994,13 @@ class DIVXDIV extends CLASSNAMER {
 		return arrSplit.filter(el => !SP.includes(el));   //:::::Elimina vacios
 	}
 	/**
-	 * 
+	 * oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 	 * @param {*} strClassNameToAdd 
 	 * @param {*} intDesde 
 	 * @param {*} intHasta 
 	 * @returns 
 	 */
-	cssAddClassNameByItem(strClassNameToAdd = '', intDesde = 0, intHasta = parseInt(this.arrayCLASS_DIVBASE.length - 1)) {
+	cssAddClassNameByItem(strClassNameToAdd = '', intDesde = 0, intHasta = parseInt(this.array_Base_Divs.length - 1)) {
 		if (typeof (strClassNameToAdd) != 'string' || strClassNameToAdd == '') return false;
 		//		
 		if (intDesde > intHasta) {
@@ -2044,13 +2008,13 @@ class DIVXDIV extends CLASSNAMER {
 			intHasta = intDesde;
 			intDesde = aux;
 		}
-		if (intDesde >= this.arrayCLASS_DIVBASE.length) return false;
+		if (intDesde >= this.array_Base_Divs.length) return false;
 		if (typeof (intDesde) != 'number' || intDesde <= 0) intDesde = 0;
-		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.arrayCLASS_DIVBASE.length - 1;
-		if (intHasta >= this.arrayCLASS_DIVBASE.length) intHasta = this.arrayCLASS_DIVBASE.length - 1;
+		if (typeof (intHasta) != 'number' || intHasta <= 0) intHasta = this.array_Base_Divs.length - 1;
+		if (intHasta >= this.array_Base_Divs.length) intHasta = this.array_Base_Divs.length - 1;
 		//Proceso. 
 		for (let i = intDesde; i <= intHasta; i++) {
-			super.sumClassName(this.arrayCLASS_DIVBASE[i].objDiv, strClassNameToAdd);
+			super.add_className(this.array_Base_Divs[i].objDiv, strClassNameToAdd);
 		}
 	}
 	/**
@@ -2065,9 +2029,9 @@ class DIVXDIV extends CLASSNAMER {
 		if (typeof (isContenedor) != 'boolean') isContenedor = false;
 		//
 		TAG_To_Match = this._withOrWithOut_PrefijoTag(TAG_To_Match);
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			if (TAG_To_Match == this.arrayCLASS_DIVBASE[i].HOW.Tag)
-				super.sumClassName(this.arrayCLASS_DIVBASE[i].objDiv, ClassNameToAdd);
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			if (TAG_To_Match == this.array_Base_Divs[i].HOW.Tag)
+				super.add_className(this.array_Base_Divs[i].objDiv, ClassNameToAdd);
 		}
 
 	}
@@ -2083,11 +2047,11 @@ class DIVXDIV extends CLASSNAMER {
 		if (typeof (isContenedor) != 'boolean') isContenedor = false;
 		//
 		if (isContenedor == true) {
-			super.removeClassName(this.CONTAINER, strClassNameToDelete);
+			super.elimina_className(this.CONTAINER, strClassNameToDelete);
 			return;
 		}
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			super.removeClassName(this.arrayCLASS_DIVBASE[i].objDiv, strClassNameToDelete);
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			super.elimina_className(this.array_Base_Divs[i].objDiv, strClassNameToDelete);
 		}
 	}
 
@@ -2099,8 +2063,8 @@ class DIVXDIV extends CLASSNAMER {
 	 */
 	cssSetClassName_TAG(strTagAux = '', funcionSiMatch) {
 		if (typeof (strTagAux) != 'string' || strTagAux == '') return false;
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			if (this.arrayCLASS_DIVBASE[i].HOW.strTag == strTagAux) {
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			if (this.array_Base_Divs[i].HOW.strTag == strTagAux) {
 				funcionSiMatch;
 			}
 		}
@@ -2117,14 +2081,14 @@ class DIVXDIV extends CLASSNAMER {
 			'\n\t| PATRON: ' + this.FirstDiv.objDiv.id + '' +
 			'\n\t|---------------------------';
 
-		txt += ('\n\tCONTENEDOR: ' + this.CONTAINER.id + '\t|| .CLASSNAME: < ' + super.getClassName(this.CONTAINER) + ' >');
+		txt += ('\n\tCONTENEDOR: ' + this.CONTAINER.id + '\t|| .CLASSNAME: < ' + super.get_className(this.CONTAINER) + ' >');
 		txt += '\n\t-----------------------------';
 		txt += '\n\t**  DIV \t\t**  TAG \t** FLAG \t** CLASSNAMES....\n';
-		for (let i = 0; i < this.arrayCLASS_DIVBASE.length; i++) {
-			txt += '\t|| ' + this.arrayCLASS_DIVBASE[i].objDiv.id +
-				'\t\t|| ' + this.arrayCLASS_DIVBASE[i].HOW.Tag +
-				'\t\t|| ' + this.arrayCLASS_DIVBASE[i].HOW.Flag +
-				'\t\t|| ' + super.getClassName(this.arrayCLASS_DIVBASE[i].objDiv.id) + '\n';
+		for (let i = 0; i < this.array_Base_Divs.length; i++) {
+			txt += '\t|| ' + this.array_Base_Divs[i].objDiv.id +
+				'\t\t|| ' + this.array_Base_Divs[i].HOW.Tag +
+				'\t\t|| ' + this.array_Base_Divs[i].HOW.Flag +
+				'\t\t|| ' + super.get_className(this.array_Base_Divs[i].objDiv.id) + '\n';
 		}
 		txt += '--- FIN -----------------------------------\n';
 		return txt;
@@ -2143,7 +2107,7 @@ class DIVXDIV extends CLASSNAMER {
 	 */
 	cssCambiaFILEPATH(strFilePath_LINK = '') {
 		if (typeof (strFilePath_LINK) != 'string' || strFilePath_LINK == '') return false;
-		super.switchFilePath(strFilePath_LINK);
+		super.switch_file_path(pathArchivo = strFilePath_LINK);
 	}
 	/**
 	 * 
@@ -2160,10 +2124,10 @@ class DIVXDIV extends CLASSNAMER {
 	}
 
 	headAddLink(laEtiqueta = '') {
-		super.elHEAD.AddETIQUETA(laEtiqueta);
+		super.elHEAD.add_etiqueta(laEtiqueta);
 	}
 	headAddScript(elScript = '') {
-		super.elHEAD.AddETIQUETA(elScript);
+		super.elHEAD.add_etiqueta(elScript);
 	}
 	headDeleteLink() {
 
@@ -2175,17 +2139,17 @@ class DIVXDIV extends CLASSNAMER {
 	_withOrWithOut_PrefijoTag(elTag = '') {
 		if (typeof (elTag) != 'string') return '#'
 		//Proceso. 
-		const posicionPref = elTag.indexOf(DIVXDIV.PREFIJO_TAG);
+		const posicionPref = elTag.indexOf(Div_X_Div.PREFIJO_TAG);
 		if (posicionPref == -1) {
 			//no trae el prefijo.
-			elTag = DIVXDIV.PREFIJO_TAG + elTag;
+			elTag = Div_X_Div.PREFIJO_TAG + elTag;
 		} else {
 			//trae el prefijo
 			if (posicionPref == 0) {
 				//correcto!! 			
 			} else {
 				//trae el prefijo pero No al principio. Se lo pongo.
-				elTag = DIVXDIV.PREFIJO_TAG + elTag;
+				elTag = Div_X_Div.PREFIJO_TAG + elTag;
 			}
 
 		}
@@ -2195,44 +2159,28 @@ class DIVXDIV extends CLASSNAMER {
 	getItem(index = -1) {
 		if (typeof (index) != "number") return false;
 		if (index < 0) index = 0;
-		if (index >= this.arrayCLASS_DIVBASE.length) index = this.arrayCLASS_DIVBASE.length;
-		return this.arrayCLASS_DIVBASE[index].objDiv;
+		if (index >= this.array_Base_Divs.length) index = this.array_Base_Divs.length;
+		return this.array_Base_Divs[index].objDiv;
 	}
 	//
 	//=== GETTERS =============================================
 	get objContenedor() { return this.CONTAINER; }
-	get Array(){return this.arrayCLASS_DIVBASE; }
-	get cuantos() { return this.arrayCLASS_DIVBASE.length - 1; }
+	get Array(){return this.array_Base_Divs; }
+	get cuantos() { return this.array_Base_Divs.length - 1; }
 }
-//===========llave fin de clase ROMA==============================================================================
-//================================================================================================================
 
 
-
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * C L A S E  "CLASS_navegador"  	
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 /** 
- * C L A S E      N A V E G A D O R          D V D	       =
- ============================================================
- * 
- * Ejemplo de uso:
+ * Clase que obtiene el nombre del navegador, su version y si es Internet Explorer.
+ * CAMBIAR ESTA CLASE POR UN FRAMEWORK DE DETECCION DE NAVEGADORES.??????????????????????????????????????????????????
+ 
+* Ejemplo de uso:
  * 	let miNavegador = new CLASS_navegador();	//clase completa!!
-
-	console.log('nombre Comun Navegador: '	+miNavegador.navegador+
-		'\nVersion: '               		+miNavegador.version+
-		'\n es Internet Explorer: ' 		+miNavegador.isIE+
-		'\n Todos los Navegadores: '		+miNavegador.arrNavegadores);
- *
+	console.log('nombre Comun Navegador: ' + miNavegador.navegador +'\nVersion: ' + miNavegador.version + '\n es Internet Explorer: ' + miNavegador.isIE + '\n Todos los Navegadores: ' + miNavegador.arrNavegadores);
  * */
-/* PROPUESTA DE MEJORA
-objNavegador={
-	bActivo:false,
-	CodeName:'',
-	version:'',
-	key:''
-};
-arrBrowsers=['Chrome','Firefox','Internet Explorer','Opera','Safari'];
-arrKey_Navegador=['chrome','firefox'+'msie'+'opera','safari'];
-arrObjectNavegador=[];
-*/
 class CLASS_navegador {
 	static CARACTER_SEPARADOR = ' ';
 	isIE = false;
@@ -2291,17 +2239,17 @@ class CLASS_navegador {
 		/**
 		 * Versión del navegador. */
 		//1)Primero calculamos el indice donde encontramos la clave.
-		var indice = this.cadenaNavegador.indexOf(this.claveVersion);	//cacha donde está el principio del nombre del navegador. = (indexOf)chrome/
+		let indice = this.cadenaNavegador.indexOf(this.claveVersion);	//cacha donde está el principio del nombre del navegador. = (indexOf)chrome/
 		if (indice < 0)
 			throw ('Error en la Versión del navegador. Cadena claveVersion no encontrada');
 		//
 		//2)Sacamos otra cadena desde la clave hasta el final.
-		var strDesdeClaveHastaVersion = this.cadenaNavegador.substring(indice + this.claveVersion.length, this.cadenaNavegador.length);
+		let strDesdeClaveHastaVersion = this.cadenaNavegador.substring(indice + this.claveVersion.length, this.cadenaNavegador.length);
 		//
 		//3)Situamos el caracter separador para saber cual es la version 
-		var indexFinVersion = 0;
-		for (var i = 0; i < strDesdeClaveHastaVersion.length; i++) {
-			var car = strDesdeClaveHastaVersion.charAt(i);
+		let indexFinVersion = 0;
+		for (let i = 0; i < strDesdeClaveHastaVersion.length; i++) {
+			let car = strDesdeClaveHastaVersion.charAt(i);
 			if (car == CLASS_navegador.CARACTER_SEPARADOR) {
 				break;
 			} else {
@@ -2341,16 +2289,13 @@ class CLASS_navegador {
 		document.getElementById('idInfo').innerHTML = text;
 	}
 }
-/** ===================================================================================== 
- * C L A S E      que sirve de objeto base para ser usado en la clase FILEFORMAL	       
- ========================================================================================
- * 
- * Ejemplo de uso:
- * 	
- *
- * */
 
-class DatosFichero {
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * CLASS  "Data_File_Formal"  	
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * CLASE que sirve de objeto base para ser usado en la clase File_Formal	        
+
+class Data_File_Formal {
 	//:::GENERALES       
 	isAbsolute = true;        //  Establezco la Ruta Absoluta = true , Relativa = false.::::::::
 	rutaOriginal = '';            //  La ruta original introducida. file:C:/ruta/file.ext:::::::::::
@@ -2375,10 +2320,11 @@ class DatosFichero {
 		tipoRuta: '',        //totalMatch-totalIndex ==> '0-0' || '1-1' || '2-1' || '2-2' 
 	}
 }
-/** =================================================================== 
- * 		C L A S E      	       FILEFORMAL
- ======================================================================
- * 
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+// * CLASS  "File_Formal"  	
+// ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+/** 
  * Ejemplo de uso:
 	 -let ejFile = new fileFormat('file:/C:/users/Desktop/ficheroEjemplo.css');
 	 -ejFile.getData_fromURL([filePath, ''], protocolo[true, false], unidad[true, false], vector[true, false], nombreArchivo[true, false]);  //=>
@@ -2387,15 +2333,14 @@ class DatosFichero {
 	 -ejFile.viewDataFile('Msg Opcional,  datosFichero);  //=> String con todos los valores de this.FileData. falta la conexion con el 'mensajero' 	
  * */
 /* *
- * -Introduces una Ruta de Archivo, Absoluta o Relativa y lo descompone 
- * separando el nombre de archivo / Unidad / extension / carpetas de la ruta del
- *     archivo / carpeta actual del cliente / protocolo del cliente.
+ * Introduces una Ruta de Archivo, Absoluta o Relativa y lo descompone 
+ * separando el nombre de archivo / Unidad / extension / carpetas de la ruta del:  archivo / carpeta actual del cliente / protocolo del cliente.
  * 
- * -No Comprueba la validez de la ruta, sólo intenta ponerlo en formato ruta. * 
- * -Tambien se puede comparar por Nombre de Archivo o por Ruta hasta el archivo.
- * -Tambien se puede añadir otro archivo y cambiar el que ya tenemos fijado.
- * -Tambien se pueden ver todas las propiedades del archivo introducido.
- * -No Comprueba la validez de la ruta, sólo intenta ponerlo en formato ruta.
+ *  No Comprueba la validez de la ruta, sólo intenta ponerlo en formato ruta.  
+ *  Tambien se puede comparar por Nombre de Archivo o por Ruta hasta el archivo.
+ *  Tambien se puede añadir otro archivo y cambiar el que ya tenemos fijado.
+ *  Tambien se pueden ver todas las propiedades del archivo introducido.
+ *  No Comprueba la validez de la ruta, sólo intenta ponerlo en formato ruta.
  * */
 
 /**
@@ -2404,26 +2349,24 @@ class DatosFichero {
  *  //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_expressions
  * 
  * */
-class FILEFORMAL {
-	FileData = new DatosFichero();
+class File_Formal {
+	FileData = new Data_File_Formal();
 	filePath = '';       //la ruta pasada como argumento. es la que se va a someter a los filtros para descomposicion.
 	isValid = true;      // No quiere decir que sea una ruta válida, sino que tiene formato de ruta.
-	//_______________________
-	//Expresiones Regulares:    
-	static regEXP_SlashSlash = /\/\//g;               // ( \: ) 2 puntos; (g) Todo.        
-	static regEXP_InvertSlash = /[\\]+/g;             //Expresion Barra Invertida.
-	static regEXP_Slash = /\//g;                      //Expresion Barra.
-
-	static regEXP_Pto = /\./g;                      // ( \: ) 2 puntos; (g) Todo.        
-	static regEXP_PtoPto = /\.\./g;            //Expresion '../' ; desde el inicio de la cadena(^) ; todas las ocurrencias.
-
-	static regEXP_PtoSlash = /\.\//g;                //Expresion './'  ; desde el inicio de la cadena(^) ; todas las ocurrencias.
-	static regEXP_PtoPtoSlash = /\.\.\//g;            //Expresion '../' ; desde el inicio de la cadena(^) ; todas las ocurrencias.
-
-	static regEXP_Char2PtoSlash = /[a-z]\:\//gi;      //[a-z](de la 'a' la 'z' Sólo 1 letra);  '\:\/'(seguido de :/ ))('i' = mayusculas y minusculas)(g=busca todas)
-	static regEXP_2PtoSlash = /\:\//g;                // ( \: ) dos puntos; ( \/ ) barra ; g(go global)
-	static regEXP_2Puntos = /\:/g;                    // ( \: ) 2 puntos; (g) Todo.        
-	//____________________________________________
+	
+	// ■■■■■■■■■ Expresiones Regulares:    
+	static regEXP_SlashSlash = /\/\//g;               	// ►  ( \: ) 2 puntos; (g) Todo.        
+	static regEXP_InvertSlash = /[\\]+/g;             	// ► Expresion Barra Invertida.
+	static regEXP_Slash = /\//g;                      	// ► Expresion Barra.
+	static regEXP_Pto = /\./g;                      	// ►  ( \: ) 2 puntos; (g) Todo.        
+	static regEXP_PtoPto = /\.\./g;            			// ► Expresion '../' ; desde el inicio de la cadena(^) ; todas las ocurrencias.
+	static regEXP_PtoSlash = /\.\//g;                	// ► Expresion './'  ; desde el inicio de la cadena(^) ; todas las ocurrencias.
+	static regEXP_PtoPtoSlash = /\.\.\//g;            	// ► Expresion '../' ; desde el inicio de la cadena(^) ; todas las ocurrencias.
+	static regEXP_Char2PtoSlash = /[a-z]\:\//gi;      	// ► [a-z](de la 'a' la 'z' Sólo 1 letra);  '\:\/'(seguido de :/ ))('i' = mayusculas y minusculas)(g=busca todas)
+	static regEXP_2PtoSlash = /\:\//g;                	// ► ( \: ) dos puntos; ( \/ ) barra ; g(go global)
+	static regEXP_2Puntos = /\:/g;                    	// ► ( \: ) 2 puntos; (g) Todo.        
+	
+	// ■■■■■■■■■ Contadores de Contadores de caracteres:    
 	_cuenta_InvertSlash = 0;        // '\'
 	_cuenta_Pto = 0;                // '.'
 	_cuenta_Slash = 0;              // '/'
@@ -2433,13 +2376,13 @@ class FILEFORMAL {
 	_cuenta_2PtoSlash = 0;            // ':/'
 	_cuenta_2Ptos = 0;                // ':'    
 
-	//=== Patrones de Protocol
+	// ■■■■■■■■■ Patrones de Protocol
 	arrayPATRON_Protocolo = ['file:', 'ftp:', 'http:', 'https:', 'mailto:'];
-	//
-	//=== Patrones típicos de un path que puede haber en una  ruta pasada(De momento solo info).
+
+	// ■■■■■■■■■ Patrones típicos de un path que puede haber en una  ruta pasada(De momento solo info).
 	arrayPatronesExtensiones = ['.css', '.js', '.php', '.htm', '.png', '.jpg', '.jpeg'];
-	//
-	errorMap;   //key value para los mensajes de error.
+	errorMap;   				// key value para los mensajes de error.
+	
 	/**
 	 * @param {*} filePath String con una ruta relativa o absoluta.
 	 * @returns Descomposion del String en sus partes protocolo / unidad / vector / nombreArchivo.ext
@@ -2490,7 +2433,7 @@ class FILEFORMAL {
 		//
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 		//::: C A R G A   D E   D A T O S    G E N E R A L :::
-		let datosFichero = new DatosFichero();
+		let datosFichero = new Data_File_Formal();
 		datosFichero.isValid = true;
 		//:::        
 		this._loadDataFileClient(datosFichero);         //::: Carga los datos del Cliente ::::::::: 
@@ -2733,7 +2676,7 @@ class FILEFORMAL {
 		//
 		//::::::::::::::::::::::::::::::::::::::
 		//::: C A R G A   D E   D A T O S    :::
-		let datosFichero = new DatosFichero();
+		let datosFichero = new Data_File_Formal();
 		//:::::::::::::::::
 		datosFichero.isValid = true;
 		//:::
@@ -2805,7 +2748,7 @@ class FILEFORMAL {
 	 * @returns TotalMatch TotalIndex, arrIndexItem, arrDataItem en un objeto de funcion objMatch2Ptos
 	 */
 	_getObjMatch2Ptos(arrSplitSlash_FilePath = []) {
-		const objMatch_2Ptos = this._getObjMatchCount(arrSplitSlash_FilePath, FILEFORMAL.regEXP_2Puntos);
+		const objMatch_2Ptos = this._getObjMatchCount(arrSplitSlash_FilePath, File_Formal.regEXP_2Puntos);
 		//:::::::::::::::::::::::::::::::::::
 		//* Validaciones SOBRE matchCount        
 		if (!objMatch_2Ptos) { return false; }
@@ -3092,9 +3035,9 @@ class FILEFORMAL {
 		if (filePath == null || filePath == undefined || filePath == '') { return false; }
 
 		filePath = filePath.trim();
-		filePath = filePath.replaceAll(FILEFORMAL.regEXP_InvertSlash, '/');    //Switch '\' por '/'
+		filePath = filePath.replaceAll(File_Formal.regEXP_InvertSlash, '/');    //Switch '\' por '/'
 		while (filePath.indexOf('//') >= 0) {     //Cambia todos los dobleSlash ('//') por '/'
-			filePath = filePath.replace(FILEFORMAL.regEXP_SlashSlash, '/');
+			filePath = filePath.replace(File_Formal.regEXP_SlashSlash, '/');
 		}
 		//Quita los slash de inicio y fin.        
 		return this._removeSlash_IniFin(filePath, true, true);
@@ -3155,13 +3098,13 @@ class FILEFORMAL {
 	_setCuentas(filePath) {
 		try {
 			if (!filePath) return false;
-			this._cuenta_PtoPtoSlash = (filePath.match(FILEFORMAL.regEXP_PtoPtoSlash) || []).length;
-			this._cuenta_PtoSlash = (filePath.match(FILEFORMAL.regEXP_PtoSlash) || []).length;
-			this._cuenta_Char2PtoSlash = (filePath.match(FILEFORMAL.regEXP_Char2PtoSlash) || []).length;
-			this._cuenta_Pto = (filePath.match(FILEFORMAL.regEXP_Pto) || []).length;
-			this._cuenta_2PtoSlash = (filePath.match(FILEFORMAL.regEXP_2PtoSlash) || []).length;
-			this._cuenta_2Ptos = (filePath.match(FILEFORMAL.regEXP_2Puntos) || []).length;
-			this._cuenta_Slash = (filePath.match(FILEFORMAL.regEXP_Slash) || []).length;
+			this._cuenta_PtoPtoSlash = (filePath.match(File_Formal.regEXP_PtoPtoSlash) || []).length;
+			this._cuenta_PtoSlash = (filePath.match(File_Formal.regEXP_PtoSlash) || []).length;
+			this._cuenta_Char2PtoSlash = (filePath.match(File_Formal.regEXP_Char2PtoSlash) || []).length;
+			this._cuenta_Pto = (filePath.match(File_Formal.regEXP_Pto) || []).length;
+			this._cuenta_2PtoSlash = (filePath.match(File_Formal.regEXP_2PtoSlash) || []).length;
+			this._cuenta_2Ptos = (filePath.match(File_Formal.regEXP_2Puntos) || []).length;
+			this._cuenta_Slash = (filePath.match(File_Formal.regEXP_Slash) || []).length;
 			return true;
 		} catch (error) {
 			return false;
@@ -3519,7 +3462,7 @@ class FILEFORMAL {
 		// 
 		//Formato: Por si se ha doblado algun Slash('/')....sobre todo en el caso: 'file.ext'
 		while (vectorRetorno.indexOf('//') >= 0) {
-			vectorRetorno = vectorRetorno.replace(FILEFORMAL.regEXP_SlashSlash, '/');
+			vectorRetorno = vectorRetorno.replace(File_Formal.regEXP_SlashSlash, '/');
 		}
 		//vectorRetorno=this._putSlash_IniFin(vectorRetorno, true, true);
 		//_________________
@@ -3737,7 +3680,7 @@ class FILEFORMAL {
 		//
 		//Vector en el cliente (Carpetas sin protocolo/unidad/...Vector.../Nombre de archivo)
 		let vectorClienteAux = fileData.Client_ActualDIR.replace(loc.origin, '');
-		vectorClienteAux = vectorClienteAux.replace(FILEFORMAL.regEXP_Char2PtoSlash, '');
+		vectorClienteAux = vectorClienteAux.replace(File_Formal.regEXP_Char2PtoSlash, '');
 		//_____________________________
 		fileData.Client_Vector = vectorClienteAux;
 		//_____________________________
@@ -3749,5 +3692,5 @@ class FILEFORMAL {
 
 }
 /*FFFFFFFFFFFFFFFFIIIIIIIIIIIIIIIIINNNNNNNNNNNNNNNNNNNNNN
-					f i n    CLASE 	FILEFORMAL
+					f i n    CLASE 	File_Formal
 FFFFFFFFFFFFFFFFFFFIIIIIIIIIIIIIIIIINNNNNNNNNNNNNNNNNNNNNN*/

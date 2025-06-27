@@ -1,61 +1,71 @@
-/*
-Contenenedor  con Grid*/
+body{
+    /* ■■■■■■■■■■ Estilo del Body */
+    background:rgb(2, 230, 255);
+    color: #813737;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    margin:0px;
+    padding:15px;
+}
+
+/* ■■■■■■■■■■ Contenenedor  con Grid */
 .estiloSalon{
     float:none;
-    border:5px solid rgb(158, 41, 182);
+    border:5px solid rgb(41, 81, 182);
     width:auto;
     height:auto;
-    padding:25px;
+    padding:40px;
+    overflow-x: auto;   
+    overflow-y: auto; 
     /*
     box-sizing: border-box;
-    overflow-x: auto;   
-    overflow-y: scroll; 
     margin:0px;
     */
     background:rgb(219, 219, 224);
-    /*===>grid-area*/
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    /*gap:2em;*/
+    
+    /* ■■■■ grid-area */
+    display: grid;                                      /* ► grilla  */
+    grid-template-columns: repeat(12, 1fr);             /* ► numero de  baldosas */
+    /* gap:2em;  */                                     /* ► separacion entre las baldosas */
 }
-/*
-Div*/
+
+/* ■■■■■■■■■■ Baldosas/Divs del Salón. */
 .estiloBaldosas{
     /*
     width:fit-content;
     height:fit-content;    
     */
     padding:25px;
-    border:1px solid rgb(233, 238, 171);
+    border:1px solid rgb(177, 179, 144);
     margin:0px;
-    background:rgb(195, 225, 243);
+    background:rgb(18, 85, 128);
     float:none;
-    /*
-    Centrar*/
+    /* ■■■■ Centrar*/
     display: flex;
     justify-content: center;
     align-items: center;
     /*fin centrar*/
 }
-    .estiloBaldosas div{
-        /*
-        */
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-    .estiloBaldosas:hover{
-        /*
-        background:rgb(179, 175, 169);
-        border-right: 2px dotted #99ff99; 
-        border-left: 2px dashed #10a5a5;
-        border-bottom: 2px dashed #9999ff;
-        */
-        border:1px  dashed #9999ff;
-        
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+        /* ■■■■■■■■■■■ */
+        .estiloBaldosas div{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+
+        .estiloBaldosas:hover{
+            /* ■■■■ 
+            background:rgb(179, 175, 169);
+            border-right: 2px dotted #99ff99; 
+            border-left: 2px dashed #10a5a5;
+            border-bottom: 2px dashed #9999ff;
+            */
+            border:1px  dashed #9999ff;            
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
     
-    /*
-    ====================================MODO OSCURO ==========================================
+    /* 
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MODO OSCURO  
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
     */
 
 #soyBody_Dark{
@@ -96,19 +106,20 @@ Div*/
     background:rgb(9, 84, 128);
     float:none;
 }
-.estiloBaldosas_Dark div{
-    /*
-    */
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.estiloBaldosas_Dark:hover{
-    /*
-    background:rgb(179, 175, 169);
-    border:3px  dotted rgb(3, 8, 8);
-    border-left: 2px dashed #10a5a5;
-    */
-    border-right: 2px dotted #99ff99; 
-    border-bottom: 2px dashed #9999ff;
+        /* ■■■■■■■■■■■ */
+        .estiloBaldosas_Dark div{
+            /*
+            */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .estiloBaldosas_Dark:hover{
+            /*
+            background:rgb(179, 175, 169);
+            border:3px  dotted rgb(3, 8, 8);
+            border-left: 2px dashed #10a5a5;
+            */
+            border-right: 2px dotted #99ff99; 
+            border-bottom: 2px dashed #9999ff;
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }

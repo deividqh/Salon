@@ -2,41 +2,52 @@
 //1 RESERVA tiene 1 MESA
 //1 MESA tiene n SQUAD.
 //1 MESA tiene n sillas.
-//1 MESA de 1 SQUAD tiene 4 sillas. 1 MESA de 2 SQUAD tiene 6 sillas. 1 MESA de 3 SQUAD tiene 8 sillas.   SILLAS=SQUAD*2+2
+//1 SQUAD de 1 MESA tiene 8 sillas. 1 SQUAD de 2 MESA tiene 10 sillas. 1 SQUAD de 3 MESA tiene 12 sillas.   
+// FORMULA ► numero_de_sillas = (numero_mesas*2 + 2) + 4
 
 const NUM_INI_MESAS=0;
 const NUM_INI_SILLAS=0;
 const NUM_INI_SQUAD=0;
 let mesasTot=0;
 let sillasTot=0;
-//////////////////////////////////////////////////////////////////////////////////
-//
-//===  ===
 
 //
-//=== ESTABLECE EL DRAG AND DROP PARA LOS DIVS ----DE MOMENTO SIN USO---- ===
+//■■■ ESTABLECE EL DRAG AND DROP PARA LOS DIVS ----DE MOMENTO SIN USO---- ===
 function setDrag(objToDrag, func_On ) {}
 //
-//=== PONE EN "" EL TEXT DEL FOMULARIO DE NUMERO DE SILLAS A INSERTAR DE UNA VEZ. ===
-function resetSillasForm() {
+//■■■ PONE EN  "" EL TEXT DEL FOMULARIO DE NUMERO DE SILLAS A INSERTAR DE UNA VEZ. ===
+function reset_sillas_form() {
     let form = document.getElementById('FormMenuUP');
     form.reset();
-    
 }
-function AddCOLs(){
+/**
+	 * @see 
+	 * @called 	 ►
+	 * @example: ► 
+	 * @returns 
+	 */
+function add_columnas(){
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     let num = document.getElementById('Txt_NCOL').value;
     document.getElementById('Contenedor1').style.gridTemplateColumns = "repeat("+num+", 1fr)";
 }
 
-function AddSillas(){
+function add_sillas(){
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     let sillasToAdd = document.getElementById('Txt_NSillas').value;
     sillasToAdd=parseInt(sillasToAdd);
     if(typeof(sillasToAdd)!='number') return;
     if(sillasToAdd>1000) return;
     if(sillasToAdd>0){
-        elSaloon.AddDivs(sillasToAdd);
+        elSaloon.AddDivs( numClones = sillasToAdd);
     }else{
-        elSaloon.KillDivs(elSaloon.cuantos-sillasToAdd-1 , elSaloon.cuantos)
+        elSaloon.KillDivs(intItemDesde = elSaloon.cuantos-sillasToAdd-1 , intItemHasta = elSaloon.cuantos)
     }
     cuentaS_To_Menu();
 }
@@ -44,6 +55,10 @@ function AddSillas(){
 //=== Drop Mesa->Salon === 
 //data = mesatosalon
 function Mesa_To_Baldosa(laMesa=null,laBaldosa=null ) {    
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     const unClon= laMesa.cloneNode();
     console.log(laMesa.id);
     unClon.id=creaSEQ('Mesa');
@@ -66,6 +81,10 @@ function Mesa_To_Baldosa(laMesa=null,laBaldosa=null ) {
 //
 //===  ===
 function Silla_To_Baldosa(laSilla=null,laBaldosa=null) {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     const unClon= laSilla.cloneNode();
     unClon.id=creaSEQ('Silla')
     //unClon.draggable="true";
@@ -81,6 +100,10 @@ function Silla_To_Baldosa(laSilla=null,laBaldosa=null) {
 //
 //===  ===
 function MesaEnSalon_To_Baldosa(laMesa=null,laBaldosa=null){
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('la mesa: '+laMesa.src +', la baldosa: '+laBaldosa.id);
     console.log('Padre de la mesa antes: '+laMesa.parentNode.id);
     //laMesa.style.height="30px";
@@ -91,6 +114,10 @@ function MesaEnSalon_To_Baldosa(laMesa=null,laBaldosa=null){
 //
 //===  ===
 function SillaEnSalon_To_Baldosa(laSilla=null,laBaldosa=null) {    
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('Silla_En_Salon to Baldosa del salon');
     //
     //=== VALIDA SI DESTINO VACIO
@@ -109,6 +136,10 @@ function SillaEnSalon_To_Baldosa(laSilla=null,laBaldosa=null) {
 //
 //===  ===
 function Silla_Click(laSilla=null) {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('Silla Click');
     //(Panel-Tool) Tip Info alergia.
     //Prepara Drag para Mover.
@@ -116,16 +147,28 @@ function Silla_Click(laSilla=null) {
 //
 //=== toolTip Info alergia ===
 function Silla_Over(laSilla=null) {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('Silla Over');
 }
 //
 //=== ELIMINA SILLA ===
 function Silla_To_Puerta(laSilla=null) {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('Silla To Puerta');    
 }
 //
 //=== ELIMIA MESA ===
 function Mesa_To_Puerta() {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     console.log('Mesa To Puerta');
     //Mensaje Confirmacion.
     // Elimina Reserva.
@@ -133,6 +176,10 @@ function Mesa_To_Puerta() {
 //===================COPYPASTE===CUTPASTE========================================================================
 //
 function CopyPaste(objDrag=null,objDrop=null){
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     const unClon= objDrag.cloneNode();
     unClon.id=creaSEQ('Silla')
     unClon.draggable="true";
@@ -144,6 +191,10 @@ function CopyPaste(objDrag=null,objDrop=null){
 //
 //
 function CutPaste(objDrag=null,objDrop=null){        
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     if(objDrop.childNodes.length<=0){
         console.log('Baldosa Vacia!!');
     }else{
@@ -159,6 +210,10 @@ function CutPaste(objDrag=null,objDrop=null){
  * @returns 
  */
 function creaSEQ(strAux = '') {
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     if (typeof (strAux) != 'string') return false;
     if (strAux.length <= 2) return false;	//mínimo 2 letras.
     //
@@ -171,6 +226,10 @@ function creaSEQ(strAux = '') {
 //
 //
 function cuentaS_To_Menu(){
+    /* ■
+    ■ EJEMPLO:
+    ■ SALIDA:
+    */
     document.getElementById('LBLnumMesas').innerText='('+mesasTot+')';
     document.getElementById('LBLnumSillas').innerText='('+sillasTot+')';
     document.getElementById('TotalBaldosas').innerText=elSaloon.cuantos;
@@ -182,23 +241,32 @@ function cuentaS_To_Menu(){
 // ============================== DRAG AND DROP ==================================>
 // ===============================================================================>
 
-    //::: Xa permitir que la posición suelte los elementos.
     function AllowDrop(ev) {
+        /* ■ Xa permitir que la posición suelte los elementos.
+        ■ EJEMPLO:
+        ■ SALIDA:
+        */
         ev.preventDefault();
     }
-    //
-    //::: Xa elegir el elemento a capturar o arrastrar.
+
     function dragStart(ev) {
+        /* ■ Xa elegir el elemento a capturar o arrastrar.
+        ■ EJEMPLO:
+        ■ SALIDA:
+        */
         ev.dataTransfer.setData("text", ev.target.id);  //el registrador del movimiento.
         //
         const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
         console.log('\nDrag Start::: ' + ev.target.id + '\t|| objDrag: ' + objDrag.id);
     }
-    //______________________________
-    //::: LLEGA ALGUIEN AL SALON :::
+
     function DropSalon(ev) {
+        /* ■ LLEGA ALGUIEN AL SALON :::
+        ■ EJEMPLO:
+        ■ SALIDA:
+        */
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
+        let data = ev.dataTransfer.getData("text");
         //
         //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
         const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
@@ -211,33 +279,37 @@ function cuentaS_To_Menu(){
             case "imgSillaMenu":
                 console.log('MenuSilla->Baldosa');
                 //Silla_To_Baldosa(objDrag, objDrop);
-                Silla_To_Baldosa(sillaToClone, objDrop);
+                Silla_To_Baldosa(laSilla = sillaToClone,  laBaldosa = objDrop);
                 break;
             case "imgMesaMenu":
                 console.log('MenuMesa->Baldosa');
                 //Mesa_To_Baldosa(objDrag , objDrop);
-                Mesa_To_Baldosa(mesaToClone, objDrop);
+                Mesa_To_Baldosa(laMesa = mesaToClone,  laBaldosa = objDrop);
                 break;
             default:
                 if (data.lastIndexOf('Mesa') >= 0) {
                     console.log('MesaEnSalon->Baldosa');
-                    MesaEnSalon_To_Baldosa(objDrag, objDrop);
-                    //MesaEnSalon_To_Baldosa(mesaToClone , objDrop);
+                    MesaEnSalon_To_Baldosa(laMesa=objDrag, laBaldosa=objDrop);
+                    //MesaEnSalon_To_Baldosa(laMesa=mesaToClone , laBaldosa=objDrop);
                 } else if (data.lastIndexOf('Silla') >= 0) {
                     console.log('SillaEnSalon->Baldosa');
-                    SillaEnSalon_To_Baldosa(objDrag, objDrop);
+                    SillaEnSalon_To_Baldosa(laSilla=objDrag, laBaldosa=objDrop);
                 }
                 break;
         }
 
     }
-    //
-    //::: QUIEN LLEGA A LA PUERTA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
-    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
-    //::: ev.target , es el objeto, 
+
     function DropPuerta(ev) {
+        /* ■  Quién llega a la  PUERTA  
+        ...Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+            ► ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+            ► ev.target , es el objeto, 
+        ■ EJEMPLO:
+        ■ SALIDA:
+        */
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
+        let data = ev.dataTransfer.getData("text");
         //
         //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
         const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
@@ -267,12 +339,16 @@ function cuentaS_To_Menu(){
         cuentaS_To_Menu();
     }
     //
-    //::: QUIEN LLEGA A LA MESA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
-    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
-    //::: ev.target , es el objeto, 
     function DropMesa(ev) {
+        /* ■ QUIEN LLEGA A LA MESA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+                ► ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+                ► ev.target , es el objeto, 
+        @param {*} ev   evento de soltar objeto en una mesa.
+        ■ EJEMPLO:
+        ■ SALIDA:
+        */
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
+        let data = ev.dataTransfer.getData("text");
         //
         //Cacha el objeto que se mueve(objDrag) y el objeto donde cae(objDrop)
         const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
@@ -299,14 +375,16 @@ function cuentaS_To_Menu(){
 /**=========================================================================
 * 	                        OBJETO RESERVA.
 ============================================================================*/
-//      UN ARRAY DE SQUARES (divs de MESA DE CLIENTES)
-//      UN ARRAY DE SILLAS (DIVxDIV)
 class LARESERVA {
-    numSillas=0;        //lasSillas.ArrayDIVBASE.length; numero total de sillas del array.
+    /* 
+        UN ARRAY DE SQUARES (divs de MESA DE CLIENTES)
+        UN ARRAY DE SILLAS (DIVxDIV)
+    */
+    numSillas=0;        // lasSillas.ArrayDIVBASE.length; numero total de sillas del array.
     arrSillas 
 
-    numSQ=0;                //Modulos mesa que representan 1 Reserva.
-    arraySQs = new Array(); //Array de divs de modulos mesa necesarios.  numSillas=numSQ*2+2; numSQ=(numSillas-2)/2
+    numSQ=0;                // Modulos mesa que representan 1 Reserva.
+    arraySQs = new Array(); // Array de divs de modulos mesa necesarios.  numSillas=numSQ*2+2; numSQ=(numSillas-2)/2
 
     arrReservas = [];
 	constructor() {
@@ -314,8 +392,8 @@ class LARESERVA {
 	}
 	//.........................FIN CONSTRUCTOR..........................
 	//******************************************************************
+    
     /**
-     * 
      * @param {*} divToClone Div a Clonar.
      * @param {*} elDivContainer  Div Contenedor donde voy a meter el Clon creado.
      * @returns el Clon recien creado.
@@ -328,7 +406,7 @@ class LARESERVA {
         const idNode=divToClone.id;    
         try {
             //Creacion del clon.
-            var elClon = divToClone.cloneNode(true);
+            let elClon = divToClone.cloneNode(true);
             elClon.id = idNode;
             //
             if (!elClon.id) throw ("Error creaClon() CLON");

@@ -20,34 +20,30 @@
 
 <body style='height:100%;' id='soyBody'>
     <header>
-        <!-- === === -->
-        <!-- === MENU DE NAVEGACION SUPERIOR === -->
-        <!-- === === -->
+        <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+        <!--■■■■■■ MENU DE NAVEGACION SUPERIOR ■■■■■■ -->
+        <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
         <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid row">
-        
-                <!-- === MESA === -->
+                
+                <!-- ■■■■■■■■■■■■■ MESA === -->
                 <div class="col-1 d-flex align-items-center justify-content-center">
                     <img src="./imagenes/mesa.png" id="imgMesaMenu" height="40px" style="cursor: pointer"
                          draggable="true" ondragstart="dragStart(event)" alt="Mesa">
                 </div>
                 <div class="col-1 d-flex align-items-center">
                     <div class="fw-bold" id="LBLnumMesas">(0)</div>
-                </div>
-        
-                <!-- === Espaciador === -->
-                <div class="col-1"></div>
-        
-                <!-- === PUERTA DE SALIDA === -->
+                </div>        
+                <!-- ■■ Espaciador ■■ -->
+                <div class="col-1"></div>        
+                <!-- ■■■■■■■■■■■■■ PUERTA DE SALIDA  -->
                 <div class="col-1 d-flex align-items-center justify-content-center">
                     <img src="./imagenes/puerta.png" id="puertaDrop" height="40px" style="cursor: pointer"
-                         ondrop="DropPuerta(event)" ondragover="AllowDrop(event)" alt="Puerta de Salida">
-                </div>
-        
-                <!-- === Espaciador === -->
-                <div class="col-1"></div>
-        
-                <!-- === SILLA === -->
+                    ondrop="DropPuerta(event)" ondragover="AllowDrop(event)" alt="Puerta de Salida">
+                </div>                                
+                <!-- ■■ Espaciador ■■ -->
+                <div class="col-1"></div>                
+                <!-- ■■■■■■■■■■■■■ SILLA  -->
                 <div class="col-1 d-flex align-items-center justify-content-center">
                     <img src="./imagenes/silla.png" id="imgSillaMenu" height="40px" style="cursor: pointer"
                          draggable="true" ondragstart="dragStart(event)" alt="Silla">
@@ -56,21 +52,21 @@
                     <div class="fw-bold" id="LBLnumSillas">(0)</div>
                 </div>
         
-                <!-- === FORMULARIO === -->
+                <!-- ■■■■■■■■■■■■■ FORMULARIO con los Botones y Textos ►  Add y Cols y  -->
                 <div class="col-5">
                     <form id="FormMenuUP">
                         <div class="row align-items-center">
                             <div class="col-2 offset-1">
                                 <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
-                                        onclick="AddSillas();">Add</button>
+                                        onclick="add_sillas();">Add</button>
                             </div>
                             <div class="col-2">
                                 <input type="text" class="form-control form-control-sm" id="Txt_NSillas" 
-                                       style="font-size: 10px;" onclick="resetSillasForm();" value="1">
+                                       style="font-size: 10px;" onclick="reset_sillas_form();" value="1">
                             </div>
                             <div class="col-2">
                                 <button id="Btn_NCOL" type="button" class="btn btn-secondary btn-sm" style="font-size: 10px;"
-                                        onclick="AddCOLs();">COLS</button>
+                                        onclick="add_columnas();">COLS</button>
                             </div>
                             <div class="col-2">
                                 <input type="text" class="form-control form-control-sm" id="Txt_NCOL" 
@@ -82,48 +78,45 @@
                         </div>
                     </form>
                 </div>
+
             </div>
         </nav>
         
     </header>
 
-    <!--===============================================================-->
+    <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+    <!-- ■■■■■■■■■■■■■■■ CONTENIDO DEL BODY: Mi Contennedor Principal -->
     <div id='Contenedor1'></div>
-    <!--===============================================================-->
 
 
 </body>
 
 </html>
 
-<!-- ********************************************
-//////////////////////////////////////////////////////////////////////////////////    
-//=== ZONA    J A V A S C R I P T ===
-//////////////////////////////////////////////////////////////////////////////////-->
-<script>
+<!-- 
+    ████████████████████████████████████████████████████████████████████████████████████████████
+                                    ZONA    J A V A S C R I P T 
+    ████████████████████████████████████████████████████████████████████████████████████████████
+-->
 
-</script>
 <script>
-    //
-    //======================================================================
-    //======================= DRAG AND DROP ================================
-    //======================================================================
-    //
-    //::: Xa permitir que la posición suelte los elementos.
+    //■■■■■■■■■■■■■■■■■ DRAG AND DROP 
+
     function AllowDrop(ev) {
+        //::: Xa permitir que la posición suelte los elementos.
         ev.preventDefault();
     }
-    //
-    //::: Xa elegir el elemento a capturar o arrastrar.
+
     function dragStart(ev) {
+        //::: Xa elegir el elemento a capturar o arrastrar.
         ev.dataTransfer.setData("text", ev.target.id);  //el registrador del movimiento.
         //
         const objDrag = document.getElementById(ev.dataTransfer.getData("text"));
         console.log('\nDrag Start::: ' + ev.target.id + '\t|| objDrag: ' + objDrag.id);
     }
-    //______________________________
-    //::: LLEGA ALGUIEN AL SALON :::
+
     function DropSalon(ev) {
+        //::: LLEGA ALGUIEN AL SALON :::
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         //
@@ -158,11 +151,11 @@
         }
 
     }
-    //
-    //::: QUIEN LLEGA A LA PUERTA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
-    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
-    //::: ev.target , es el objeto, 
+
     function DropPuerta(ev) {
+        //::: QUIEN LLEGA A LA PUERTA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+        //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+        //::: ev.target , es el objeto, 
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         //
@@ -193,11 +186,11 @@
         }
         cuentaS_To_Menu();
     }
-    //
-    //::: QUIEN LLEGA A LA MESA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
-    //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
-    //::: ev.target , es el objeto, 
+
     function DropMesa(ev) {
+        //::: QUIEN LLEGA A LA MESA ::: Se tienen que soltar las sillas o mesas colocadas en el SALONPPAL
+        //::: ev.dataTransfer.getData("text") ,  Id del elemento drap(imgSillaMenu, imgMesaMenu, o #SillaEnSalon, #MesaEnSalon ).
+        //::: ev.target , es el objeto, 
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         //
@@ -218,45 +211,44 @@
         }
     }
 </script>
+
 <!--
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                            MAIN() DE EJECUCION DEL PROGRAMA
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    ██████████████████████████████████████████████████████████████████████████████████████████████████
+    ██████████████████████████████████████████████████████████████████████████████████████████████████
+                MAIN() DE EJECUCION DEL PROGRAMA
+    ██████████████████████████████████████████████████████████████████████████████████████████████████
+    ██████████████████████████████████████████████████████████████████████████████████████████████████
 -->
 <script type="text/javascript">
-    let mesaToClone = document.getElementById('imgMesaMenu');
+
+    let mesaToClone  = document.getElementById('imgMesaMenu');
     let sillaToClone = document.getElementById('imgSillaMenu');
-    //=== Crea un Salon.
-    const elSaloon = new DIVXDIV('SALON', 'Contenedor1');
+
+    // ■■■■■■ Crea un Salon.
+    const elSaloon = new Div_X_Div('SALON', 'Contenedor1');
+    
     //=== Le añade las baldosas.
-    elSaloon.AddDivs(200);
-    //== Les ponemos un Nombre para Luego Buscarlas
+    elSaloon.AddDivs(100);
+
+    // ■■■■■■ Les ponemos un Nombre para Luego Buscarlas
     elSaloon.SwitchTAG('#Baldosas');
     console.log(elSaloon.cssVerArbol());
-    //
+
     var miArray = elSaloon.getArrayTAGs('#Baldosas');
     miArray.forEach(function (unDiv, indice, array) {
-        //
-        //========= DRAG =================================================
-        //unDiv.draggable="true";       //Para hacerlos movibles. 
-        //unDiv.addEventListener('dragstart', dragStart);
-        //========= FIN DRAG =============================================
-        //
-        //=== CENTRAR ==== (está en el css en 'estilosBaldosa') 
-        //unDiv.style.display= "flex";
-        //unDiv.style.justifyContent= "center";
-        //unDiv.style.alignItems = "center";
-        //==== fin centrar elementos==================================================
-
         unDiv.addEventListener('drop', DropSalon);
         unDiv.addEventListener('dragover', AllowDrop);
     });
-    elSaloon.cssSetClassNameUnique('estiloSalon', true);
-    elSaloon.cssSetClassNameUnique('estiloBaldosas');
+
+    elSaloon.set_className_unique('estiloSalon', true);
+    elSaloon.set_className_unique('estiloBaldosas');
     console.log(elSaloon.cssVerArbol());
     //
     //
+    let util = new utilDvd();
+    util.toolTip.setDelay(4);
+	//util.toolTip.setColor('orange');
+	util.toolTip.mostrar('Mensaje'+'<br>Mostrado por Dvd');
+    util.eventos.encender(elSaloon.objContenedor, 'click')
 
 </script>
